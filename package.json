@@ -1,6 +1,9 @@
 {
   "name": "indie-nest-web-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Arkenna Indie Nest Web Application",
+  "author": "Arkenna Team",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
