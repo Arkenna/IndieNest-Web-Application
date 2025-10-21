@@ -1,0 +1,52 @@
+<h1 class="title">IndieNest</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>{{"iam.user" | translate}}</mat-label>
+    <input matInput formControlName="name" required>
+    @if(form.get('name')!.touched && form.get('name')!.hasError('required')){
+      <mat-error>{{"iam.errors.user.required" | translate}}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{"iam.email" | translate}}</mat-label>
+    <input matInput formControlName="email" required>
+    @if(form.get('email')!.touched && form.get('email')!.hasError('required')){
+      <mat-error>{{"iam.errors.email.required" | translate}}</mat-error>
+    }
+    @if(form.get('email')!.hasError('email')){
+      <mat-error>{{"iam.errors.email.invalid" | translate}}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{"iam.password" | translate}}</mat-label>
+    <input matInput formControlName="password" required>
+    @if(form.get('password')!.touched && form.get('password')!.hasError('required')){
+      <mat-error>{{"iam.errors.password.required" | translate}}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{"iam.confirm_password" | translate}}</mat-label>
+    <input matInput formControlName="passwordConfirmation" required>
+    @if(form.get('passwordConfirmation')!.touched && form.get('passwordConfirmation')!.hasError('required')){
+      <mat-error>{{"iam.errors.confirm_password.required" | translate}}</mat-error>
+    }
+    @if (form.errors?.['passwordsMismatch'] && form.get('passwordConfirmation')?.touched) {
+      <mat-error>{{"iam.errors.confirm_password.mismatch" | translate}}</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{"iam.phone" | translate}}</mat-label>
+    <input matInput formControlName="phoneNumber" required>
+    @if(form.get('phoneNumber')!.touched && form.get('phoneNumber')!.hasError('phoneNumber')){
+      <mat-error>{{"iam.errors.phone.required" | translate}}</mat-error>
+    }
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+    {{"iam.sign-up" | translate}}
+  </button>
+</form>
