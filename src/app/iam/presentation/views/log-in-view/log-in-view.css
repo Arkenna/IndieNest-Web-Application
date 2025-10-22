@@ -1,0 +1,16 @@
+.title {
+  margin: 16px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 16px;
+}
+.error-message {
+  display: block;
+  margin-top: 10px;
+  color:white;
+  font-size: 14px;
+}

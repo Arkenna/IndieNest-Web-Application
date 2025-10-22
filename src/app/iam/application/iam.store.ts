@@ -23,9 +23,18 @@ export class IamStore {
   private readonly errorSignal = signal<string | null>(null);
   readonly error = this.errorSignal.asReadonly();
 
+  private _currentAccount: Account | undefined = undefined;
+
   constructor(private iamApi: IamApi) {
     this.loadUsers();
     this.loadAccounts();
+  }
+
+  get currentAccount(): Account | undefined {
+    return this._currentAccount;
+  }
+  set currentAccount(value: Account){
+    this._currentAccount = value;
   }
 
   private loadUsers(): void {

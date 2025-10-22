@@ -1,0 +1,22 @@
+<h1 class="title">IndieNest</h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>{{"iam.user" | translate}}/{{"iam.email" | translate}}</mat-label>
+    <input matInput formControlName="identifier" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{"iam.password" | translate}}</mat-label>
+    <input matInput formControlName="password" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+    {{"iam.log-in" | translate}}
+  </button>
+
+  <mat-error class="error-message">
+    @if (credentialNotFound){
+      {{ "iam.errors.credentials" | translate }}
+    }
+  </mat-error>
+</form>

@@ -13,23 +13,10 @@
     "sign-up": "Sign up",
 
     "errors": {
-      "user": {
-        "required": "User is required"
-      },
-      "email": {
-        "required": "Email is required",
-        "invalid": "Email invalid"
-      },
-      "password": {
-        "required": "Password is required"
-      },
-      "confirm_password":{
-        "required": "Confirm password is required",
-        "mismatch": "Passwords mismatch"
-      },
-      "phone": {
-        "required": "Phone number is required"
-      }
+      "required": "Required field",
+      "invalid": "Invalid field",
+      "mismatch": "Password mismatch",
+      "credentials": "Credentials not found"
     }
   }
 
