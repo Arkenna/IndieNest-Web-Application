@@ -25,7 +25,8 @@ export class Layout {
 
   options = [
     {link: '/home', label: 'option.home'},
+    {link: '/sign-up', label: 'option.sign-up'},
+    {link: '/log-in', label: 'option.log-in'},
   ]
-
 }
 

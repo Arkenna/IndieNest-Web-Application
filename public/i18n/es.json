@@ -1,6 +1,8 @@
 {
   "option": {
-    "home": "Inicio"
+    "home": "Inicio",
+    "sign-up": "Registrarse",
+    "log-in": "Iniciar Sesión"
   },
   "iam": {
 
