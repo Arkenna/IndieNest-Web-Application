@@ -751,7 +751,6 @@ package iam.infrastructure.resources{
     }
     interface AccountResource <<Resource>>{
         id: number
-        userId: number
         user: UserResource
         email: string
         password: string
