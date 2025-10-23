@@ -1,5 +1,5 @@
 export enum ArtCategory {
-  PIXEL_ARTICLE,
+  PIXEL_ART,
   POSTER,
   FAN_ART,
   CHARACTER_DESIGN,

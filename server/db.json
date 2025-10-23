@@ -69,7 +69,7 @@
   ],
 
   "arts": [
-    { "id": 1, "authorId": 2, "name": "Retro City", "description": "Fan art estilo pixel retro inspirado en videojuegos de los 80.", "rating": 5, "creationDate": "2023-06-10", "image": "art1.jpg", "category": "PIXEL_ARTICLE" },
+    { "id": 1, "authorId": 2, "name": "Retro City", "description": "Fan art estilo pixel retro inspirado en videojuegos de los 80.", "rating": 5, "creationDate": "2023-06-10", "image": "art1.jpg", "category": "PIXEL_ART" },
     { "id": 2, "authorId": 6, "name": "Celestial Dream", "description": "Concept art de un universo celestial con colores suaves.", "rating": 4, "creationDate": "2023-07-15", "image": "art2.jpg", "category": "CONCEPT_ART" },
     { "id": 3, "authorId": 10, "name": "Hero Awakens", "description": "Poster épico de un héroe emergiendo del caos.", "rating": 5, "creationDate": "2023-08-20", "image": "art3.jpg", "category": "POSTER" },
     { "id": 4, "authorId": 13, "name": "Forest Spirit", "description": "Diseño de personaje inspirado en criaturas del bosque.", "rating": 4, "creationDate": "2023-09-30", "image": "art4.jpg", "category": "CHARACTER_DESIGN" },

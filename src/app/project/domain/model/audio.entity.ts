@@ -21,7 +21,7 @@ export class Audio extends Project{
       description: audio.description,
       rating: audio.rating,
       creationDate: audio.creationDate
-    })
+    });
     this._audioUrl=audio.audioUrl;
     this._format=audio.format;
     this._category=audio.category;
