@@ -17,4 +17,6 @@ export const environment = {
 
   publicationsEndpointPath: "/publications",
   answersEndpointPath: "/answers",
+
+  shoppingCartsEndpointPath: "/shopping-carts",
 };
