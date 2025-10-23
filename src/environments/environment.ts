@@ -4,4 +4,7 @@ export const environment = {
   usersEndpointPath: "/users",
   accountsEndpointPath: "/accounts",
   reviewsEndpointPath: "/reviews",
+  artsEndpointPath: "/arts",
+  gamesEndpointPath: "/games",
+  audiosEndpointPath: "/audios",
 };
