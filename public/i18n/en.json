@@ -1,6 +1,8 @@
 {
   "option": {
-    "home": "Home"
+    "home": "Home",
+    "sign-up": "Sign Up",
+    "log-in": "Log In"
   },
   "iam": {
 

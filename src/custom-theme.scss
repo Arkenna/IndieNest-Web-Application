@@ -6,9 +6,10 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 @include mat.core();
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  @include mat.toolbar-overrides((container-background-color: green, container-text-color: black));
+  @include mat.toolbar-overrides((container-background-color: #92FF71, container-text-color: black));
 }
 
 html {
@@ -17,7 +18,7 @@ html {
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: 'Poppins',
     density: 0,
   ));
 }
@@ -31,7 +32,7 @@ body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: gray;
+  background-color: #595959;
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 
