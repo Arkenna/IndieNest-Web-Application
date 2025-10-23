@@ -5,7 +5,7 @@ const signUp = () =>
   import("./iam/presentation/views/sign-up-view/sign-up-view").then(m => m.SignUpView);
 
 const logIn = () =>
-  import("./iam/presentation/views/sign-up-view/sign-up-view").then(m => m.SignUpView);
+  import("./iam/presentation/views/log-in-view/log-in-view").then(m => m.LogInView);
 
 const baseTitle = "Indie Nest Web Application";
 
