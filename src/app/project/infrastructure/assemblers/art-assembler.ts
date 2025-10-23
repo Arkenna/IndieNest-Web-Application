@@ -8,6 +8,11 @@ export class ArtAssembler implements BaseAssembler<Art, ArtResource, ArtsRespons
 
     return new Art({
       id: resource.id,
+      authorId: resource.authorId,
+      name: resource.name,
+      description: resource.name,
+      rating: resource.rating,
+      creationDate: resource.creationDate,
       image: resource.image,
       category: resource.category,
     });
@@ -19,6 +24,11 @@ export class ArtAssembler implements BaseAssembler<Art, ArtResource, ArtsRespons
   toResourceFromEntity(entity:Art){
     return {
       id: entity.id,
+      authorId: entity.authorId,
+      name: entity.name,
+      description: entity.name,
+      rating: entity.rating,
+      creationDate: entity.creationDate,
       image: entity.image,
       category: entity.category,
     } as ArtResource;
