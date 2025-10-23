@@ -1,25 +1,36 @@
-import {User} from '../../../iam/domain/model/user.entity';
 
 export class Review {
-  constructor(review:{id:number, user:User,comment:string, rating:number,creationDate:string}) {
+  constructor(review:{
+    id:number,
+    userId:number,
+    projectId:number,
+    comment:string,
+    rating:number,
+    creationDate:string
+  }) {
     this._id = review.id;
-    this._user = review.user;
+    this._userId = review.userId;
+    this._projectId = review.projectId;
     this._comment=review.comment;
     this._rating=review.rating;
     this._creationDate=review.creationDate;
   }
 
-  private _id:number;
-  private _user:User;
-  private _comment:string;
-  private _rating:number;
-  private _creationDate:string;
+  private readonly _id:number;
+  private readonly _userId:number;
+  private readonly _projectId:number;
+  private readonly _comment:string;
+  private readonly _rating:number;
+  private readonly _creationDate:string;
 
   get id():number{
     return this._id;
   }
-  get user():User{
-    return this._user;
+  get userId():number{
+    return this._userId;
+  }
+  get projectId():number{
+    return this._projectId;
   }
   get comment():string{
     return this._comment;
@@ -31,4 +42,3 @@ export class Review {
     return this._creationDate;
   }
 }
-

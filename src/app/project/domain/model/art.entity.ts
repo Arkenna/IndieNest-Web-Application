@@ -1,21 +1,34 @@
 import {ArtCategory} from "./art-category"
-export class Art {
-  constructor(art:{id:number,image:string,category:ArtCategory}) {
-    this._id=art.id;
+import {Project} from './project.entity';
+
+export class Art extends Project {
+
+  constructor(art:{
+    id: number,
+    authorId: number,
+    name: string,
+    description: string,
+    rating: number,
+    creationDate: Date,
+    image: string,
+    category:ArtCategory
+  }) {
+
+    super({
+      id: art.id,
+      authorId: art.authorId,
+      name: art.name,
+      description: art.description,
+      rating: art.rating,
+      creationDate: art.creationDate
+    });
+
     this._image=art.image;
     this._category=art.category;
   }
-  private _id:number;
-
-  get id():number{
-    return this._id;
-  }
-
-  set id(id:number){
-    this._id=id;
-  }
 
   private _image:string;
+  private _category: ArtCategory;
 
   get image():string{
     return this._image;
@@ -23,8 +36,6 @@ export class Art {
   set image(image:string){
     this._image = image;
   }
-
-  private _category:ArtCategory;
 
   get category():ArtCategory{
     return this._category;
