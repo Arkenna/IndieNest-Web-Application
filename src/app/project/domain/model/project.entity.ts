@@ -9,7 +9,6 @@ export class Project{
     this._creationDate = project.creationDate;
     this._author = project.author;
     this.reviews = project.reviews;
-
   }
   private _id:number;
   private _name:string;
