@@ -1,9 +1,18 @@
 import {AudioCategory} from "./audio-category"
 export class Audio {
-  constructor(audio:{audioUrl:string,format:string,category:AudioCategory}) {
+  constructor(audio:{id:number,audioUrl:string,format:string,category:AudioCategory}) {
+    this._id=audio.id;
     this._audioUrl=audio.audioUrl;
     this._format=audio.format;
     this._category=audio.category;
+  }
+  private _id:number;
+
+  get id():number {
+    return this._id;
+  }
+  set id(id:number) {
+    this._id = id;
   }
 
   private _audioUrl:string;
