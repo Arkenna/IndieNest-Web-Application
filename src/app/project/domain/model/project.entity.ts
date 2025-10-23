@@ -1,4 +1,3 @@
-import {Review} from '../../../support/domain/model/review.entity'
 import {BaseEntity} from '../../../shared/domain/model/base-entity';
 
 export class Project implements BaseEntity{
