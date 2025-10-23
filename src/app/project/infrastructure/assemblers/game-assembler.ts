@@ -8,6 +8,11 @@ export class GameAssembler implements BaseAssembler<Game, GameResource, GamesRes
 
     return new Game({
       id:resource.id,
+      authorId: resource.authorId,
+      name: resource.name,
+      description: resource.description,
+      rating: resource.rating,
+      creationDate: resource.creationDate,
       price:resource.price,
       image:resource.image,
       category:resource.category,
@@ -20,6 +25,11 @@ export class GameAssembler implements BaseAssembler<Game, GameResource, GamesRes
   toResourceFromEntity(entity:Game){
     return {
       id:entity.id,
+      authorId: entity.authorId,
+      name: entity.name,
+      description: entity.description,
+      rating: entity.rating,
+      creationDate: entity.creationDate,
       price:entity.price,
       image:entity.image,
       category:entity.category,

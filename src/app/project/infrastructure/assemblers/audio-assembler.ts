@@ -8,6 +8,11 @@ export class AudioAssembler implements BaseAssembler<Audio, AudioResource, Audio
 
     return new Audio({
       id:resource.id,
+      authorId: resource.authorId,
+      name: resource.name,
+      description: resource.description,
+      rating: resource.rating,
+      creationDate: resource.creationDate,
       audioUrl:resource.audioUrl,
       format:resource.format,
       category:resource.category,
@@ -20,6 +25,11 @@ export class AudioAssembler implements BaseAssembler<Audio, AudioResource, Audio
   toResourceFromEntity(entity:Audio){
     return {
       id:entity.id,
+      authorId: entity.authorId,
+      name: entity.name,
+      description: entity.description,
+      rating: entity.rating,
+      creationDate: entity.creationDate,
       audioUrl:entity.audioUrl,
       format:entity.format,
       category:entity.category,

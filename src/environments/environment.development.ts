@@ -14,4 +14,9 @@ export const environment = {
   profilesEndpointPath: "/profiles",
   portfoliosEndpointPath: "/portfolios",
   groupProjectsEndpointPath: "/group-projects",
+
+  publicationsEndpointPath: "/publications",
+  answersEndpointPath: "/answers",
+
+  shoppingCartsEndpointPath: "/shopping-carts",
 };

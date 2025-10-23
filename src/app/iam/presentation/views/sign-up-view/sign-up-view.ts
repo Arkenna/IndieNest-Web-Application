@@ -63,7 +63,7 @@ export class SignUpView {
 
     const account = new Account({
       id: this.iamStore.accountCount(),
-      user: user,
+      userId: user.id,
       email: this.form.value.email!,
       password: this.form.value.password!,
       isActive: true,

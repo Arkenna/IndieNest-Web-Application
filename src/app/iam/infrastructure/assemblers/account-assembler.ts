@@ -11,7 +11,7 @@ export class AccountAssembler implements BaseAssembler<Account, AccountResource,
   toEntityFromResource(resource: AccountResource){
     return new Account({
       id: resource.id,
-      user: this.userAssembler.toEntityFromResource(resource.user),
+      userId: resource.userId,
       email: resource.email,
       password: resource.password,
       isActive: resource.isActive,
@@ -25,7 +25,7 @@ export class AccountAssembler implements BaseAssembler<Account, AccountResource,
   toResourceFromEntity(entity: Account) {
     return {
       id: entity.id,
-      user: this.userAssembler.toResourceFromEntity(entity.user),
+      userId: entity.userId,
       email: entity.email,
       password: entity.password,
       isActive: entity.isActive,

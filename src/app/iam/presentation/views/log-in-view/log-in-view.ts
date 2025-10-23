@@ -47,8 +47,8 @@ export class LogInView {
     if(account && account.password === this.form.value.password) {
       this.iamStore.currentAccount = account;
     }
-    else if(user && this.iamStore.accounts().find(account => account.user === user)?.password === this.form.value.password ) {
-      this.iamStore.currentAccount = this.iamStore.accounts().find(account => account.user === user)!;
+    else if(user && this.iamStore.accounts().find(account => account.userId === user.id)?.password === this.form.value.password ) {
+      this.iamStore.currentAccount = this.iamStore.accounts().find(account => account.userId === user.id)!;
     }
     else{
       this.credentialNotFound = true;
