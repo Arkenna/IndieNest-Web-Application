@@ -82,11 +82,11 @@
   ],
 
   "audios": [
-    { "id": 1, "authorId": 4, "name": "Nightfall Theme", "description": "Banda sonora atmosférica con tonos melancólicos.", "rating": 5, "creationDate": "2024-02-01", "author": "María Gutiérrez", "audioUrl": "audio1.mp3", "format": "mp3", "category": "SOUNDTRACK" },
-    { "id": 2, "authorId": 8, "name": "Dream Sequence", "description": "Audio ambiental instrumental para juegos de exploración.", "rating": 4, "creationDate": "2023-09-15", "author": "Valeria Cruz", "audioUrl": "audio2.mp3", "format": "mp3", "category": "INSTRUMENTAL" },
-    { "id": 3, "authorId": 16, "name": "Echoing Depths", "description": "Efecto de sonido de cueva con reverberaciones realistas.", "rating": 5, "creationDate": "2023-08-20", "author": "Felipe Arce", "audioUrl": "audio3.wav", "format": "wav", "category": "SOUND_EFFECT" },
-    { "id": 4, "authorId": 19, "name": "Voice of Dawn", "description": "Grabación de voz narrativa para introducciones de juego.", "rating": 4, "creationDate": "2023-07-11", "author": "Florencia Ramos", "audioUrl": "audio4.mp3", "format": "mp3", "category": "VOICE_ACTING" },
-    { "id": 5, "authorId": 4, "name": "Lost Echo", "description": "Composición emocional con instrumentos de cuerda.", "rating": 5, "creationDate": "2023-11-23", "author": "María Gutiérrez", "audioUrl": "audio5.mp3", "format": "mp3", "category": "SOUNDTRACK" }
+    { "id": 1, "authorId": 4, "name": "Nightfall Theme", "description": "Banda sonora atmosférica con tonos melancólicos.", "rating": 5, "creationDate": "2024-02-01", "audioUrl": "audio1.mp3", "format": "mp3", "category": "SOUNDTRACK" },
+    { "id": 2, "authorId": 8, "name": "Dream Sequence", "description": "Audio ambiental instrumental para juegos de exploración.", "rating": 4, "creationDate": "2023-09-15", "audioUrl": "audio2.mp3", "format": "mp3", "category": "INSTRUMENTAL" },
+    { "id": 3, "authorId": 16, "name": "Echoing Depths", "description": "Efecto de sonido de cueva con reverberaciones realistas.", "rating": 5, "creationDate": "2023-08-20", "audioUrl": "audio3.wav", "format": "wav", "category": "SOUND_EFFECT" },
+    { "id": 4, "authorId": 19, "name": "Voice of Dawn", "description": "Grabación de voz narrativa para introducciones de juego.", "rating": 4, "creationDate": "2023-07-11", "audioUrl": "audio4.mp3", "format": "mp3", "category": "VOICE_ACTING" },
+    { "id": 5, "authorId": 4, "name": "Lost Echo", "description": "Composición emocional con instrumentos de cuerda.", "rating": 5, "creationDate": "2023-11-23", "audioUrl": "audio5.mp3", "format": "mp3", "category": "SOUNDTRACK" }
   ],
 
   "porfolios": [

@@ -1,21 +1,35 @@
 import {AudioCategory} from "./audio-category"
-export class Audio {
-  constructor(audio:{id:number,audioUrl:string,format:string,category:AudioCategory}) {
-    this._id=audio.id;
+import {Project} from './project.entity';
+
+export class Audio extends Project{
+  constructor(audio:{
+    id:number,
+    authorId: number,
+    name:string,
+    description:string,
+    rating:number,
+    creationDate:Date,
+    audioUrl:string,
+    format:string,
+    category: AudioCategory
+  }) {
+
+    super({
+      id: audio.id,
+      authorId:audio.authorId,
+      name: audio.name,
+      description: audio.description,
+      rating: audio.rating,
+      creationDate: audio.creationDate
+    })
     this._audioUrl=audio.audioUrl;
     this._format=audio.format;
     this._category=audio.category;
   }
-  private _id:number;
-
-  get id():number {
-    return this._id;
-  }
-  set id(id:number) {
-    this._id = id;
-  }
 
   private _audioUrl:string;
+  private _format:string;
+  private _category:AudioCategory;
 
   get audioUrl():string{
     return this._audioUrl;
@@ -24,16 +38,12 @@ export class Audio {
     this._audioUrl=value;
   }
 
-  private _format:string;
-
   get format():string{
     return this._format;
   }
   set format(value:string){
     this._format=value;
   }
-
-  private _category:AudioCategory;
 
   get category():AudioCategory{
     return this._category;
