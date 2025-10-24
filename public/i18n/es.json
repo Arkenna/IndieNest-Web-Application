@@ -1,0 +1,25 @@
+{
+  "option": {
+    "home": "Inicio",
+    "sign-up": "Registrarse",
+    "log-in": "Iniciar Sesión"
+  },
+  "iam": {
+
+    "user": "Usuario",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirm_password": "Confirmar contraseña",
+    "phone": "Número de teléfono",
+    "log-in": "Iniciar sesión",
+    "sign-up": "Registrarse",
+
+    "errors": {
+      "required": "Campo requerido",
+      "invalid": "Campo inválido",
+      "mismatch": "Las contraseñas no coinciden",
+      "credentials": "Credenciales no encontradas"
+    }
+  }
+
+}
