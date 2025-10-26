@@ -7,9 +7,31 @@ const signUp = () =>
 const logIn = () =>
   import("./iam/presentation/views/log-in-view/log-in-view").then(m => m.LogInView);
 
+const homeView=()=>
+  import("./marketplace/presentation/views/home-view/home-view").then(m => m.HomeView);
+
+const artsView = () =>
+  import("./marketplace/presentation/views/arts-view/arts-view").then(m => m.ArtsView);
+
+const audiosView = () =>
+  import("./marketplace/presentation/views/audios-view/audios-view").then(m => m.AudiosView);
+
+const developersView = () =>
+  import("./marketplace/presentation/views/developers-view/developers-view").then(m => m.DevelopersView);
+
+const gamesView = () =>
+  import("./marketplace/presentation/views/games-view/games-view").then(m => m.GamesView);
+
 const baseTitle = "Indie Nest Web Application";
 
 export const routes: Routes = [
   {path: 'sign-up', loadComponent: signUp, title: `${baseTitle} - Sign Up`},
   {path: 'log-in', loadComponent: logIn, title: `${baseTitle} - Log In`},
+  {path: 'home', loadComponent: homeView, title: `${baseTitle} - Home`},
+
+  { path: 'arts', loadComponent: artsView, title: `${baseTitle} - Arts` },
+  { path: 'audios', loadComponent: audiosView, title: `${baseTitle} - Audios` },
+  { path: 'developers', loadComponent: developersView, title: `${baseTitle} - Developers` },
+  { path: 'games', loadComponent: gamesView, title: `${baseTitle} - Games` },
+
 ];
