@@ -1,8 +1,0 @@
-export enum ArtCategory {
-  PIXEL_ART,
-  POSTER,
-  FAN_ART,
-  CHARACTER_DESIGN,
-  CONCEPT_ART,
-  BACKGROUND_DESIGN
-}
