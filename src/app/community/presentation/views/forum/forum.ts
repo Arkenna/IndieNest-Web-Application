@@ -19,16 +19,8 @@ import {TranslatePipe} from '@ngx-translate/core';
   imports: [
     MatToolbar,
     MatToolbarRow,
-    RouterLink,
     MatButton,
     PublicationItem,
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardSubtitle,
-    MatCardContent,
-    MatCardActions,
-    MatCardImage,
     TranslatePipe
   ],
   templateUrl: './forum.html',
