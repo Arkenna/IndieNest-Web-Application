@@ -1,0 +1,26 @@
+.mat-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar-row {
+  position: relative;
+  border-bottom: 7px solid black;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.custom-button{
+  background-color: black !important;
+  color: #92FF71 !important;
+  margin-left: 7px;
+}
+
+.options{
+  margin-right: 20px;
+}

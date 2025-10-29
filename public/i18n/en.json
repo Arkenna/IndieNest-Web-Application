@@ -1,0 +1,36 @@
+{
+  "option": {
+    "home": "Home",
+    "sign-up": "Sign Up",
+    "log-in": "Log In",
+    "forum": "Forum"
+  },
+  "iam": {
+
+    "user": "User",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "phone": "Phone number",
+    "log-in": "Log in",
+    "sign-up": "Sign up",
+
+    "errors": {
+      "required": "Required field",
+      "invalid": "Invalid field",
+      "mismatch": "Password mismatch",
+      "credentials": "Credentials not found"
+    }
+  },
+
+  "forum": {
+    "title": "IndieNest Forum"
+  },
+
+  "publication": {
+    "new": "New publication",
+    "created": "Created at",
+    "comments": "View comments"
+  }
+
+}
