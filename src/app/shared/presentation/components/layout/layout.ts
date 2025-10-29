@@ -27,6 +27,7 @@ export class Layout {
     {link: '/home', label: 'option.home'},
     {link: '/sign-up', label: 'option.sign-up'},
     {link: '/log-in', label: 'option.log-in'},
+    {link: '/forum', label: 'option.forum'},
   ]
 }
 

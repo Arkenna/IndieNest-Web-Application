@@ -99,11 +99,11 @@
   ],
 
   "profiles": [
-    { "id": 1, "description": "Desarrollador apasionado por crear experiencias interactivas únicas.", "creationDate": "2024-04-10", "image": "profile1.jpg", "accountId": 1, "portfolioId": 1, "groupProjectIds": [1, 2] },
-    { "id": 2, "description": "Artista digital especializada en ilustración y pixel art.", "creationDate": "2024-04-12", "image": "profile2.jpg", "accountId": 2, "portfolioId": 2, "groupProjectIds": [2, 3] },
-    { "id": 3, "description": "Amante del desarrollo web y la creación de herramientas útiles.", "creationDate": "2024-04-14", "image": "profile3.jpg", "accountId": 3, "portfolioId": 3, "groupProjectIds": [3, 4] },
-    { "id": 4, "description": "Compositora autodidacta con experiencia en música para videojuegos.", "creationDate": "2024-04-16", "image": "profile4.jpg", "accountId": 4, "portfolioId": 4, "groupProjectIds": [1, 4] },
-    { "id": 5, "description": "Programador enfocado en diseño de juegos de exploración.", "creationDate": "2024-04-18", "image": "profile5.jpg", "accountId": 5, "portfolioId": 5, "groupProjectIds": [5, 6] }
+    { "id": 1, "description": "Desarrollador apasionado por crear experiencias interactivas únicas.", "creationDate": "2024-04-10", "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80", "accountId": 1, "portfolioId": 1, "groupProjectIds": [1, 2] },
+    { "id": 2, "description": "Artista digital especializada en ilustración y pixel art.", "creationDate": "2024-04-12", "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80", "accountId": 2, "portfolioId": 2, "groupProjectIds": [2, 3] },
+    { "id": 3, "description": "Amante del desarrollo web y la creación de herramientas útiles.", "creationDate": "2024-04-14", "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80", "accountId": 3, "portfolioId": 3, "groupProjectIds": [3, 4] },
+    { "id": 4, "description": "Compositora autodidacta con experiencia en música para videojuegos.", "creationDate": "2024-04-16", "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80", "accountId": 4, "portfolioId": 4, "groupProjectIds": [1, 4] },
+    { "id": 5, "description": "Programador enfocado en diseño de juegos de exploración.", "creationDate": "2024-04-18", "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80", "accountId": 5, "portfolioId": 5, "groupProjectIds": [5, 6] }
   ],
 
   "groupProjects": [
@@ -121,6 +121,18 @@
     { "id": 3, "userId": 3, "projectId": 2, "comment": "Podría mejorar el sistema de niveles, pero muy entretenido.", "rating": 3, "creationDate": "2024-03-13" },
     { "id": 4, "userId": 4, "projectId": 4, "comment": "El diseño artístico es precioso.", "rating": 5, "creationDate": "2024-03-15" },
     { "id": 5, "userId": 5, "projectId": 5, "comment": "Gran potencial, me encantó la historia.", "rating": 4, "creationDate": "2024-03-17" }
+  ],
+
+  "publications": [
+    {"id": 1, "userId": 1, "comment": "Comentario 1 ejemplo de una discucion", "image":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyU81N9rykoJF2_AYrAdFrRfaV4SvG2_to9Q&s", "creationDate": "2024-03-15"},
+    {"id": 2, "userId": 2, "comment": "Comentario 2 ejemplo de una discucion", "image":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyU81N9rykoJF2_AYrAdFrRfaV4SvG2_to9Q&s", "creationDate": "2024-07-15"},
+    {"id": 3, "userId": 3, "comment": "Comentario 3 ejemplo de una discucion", "image":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyU81N9rykoJF2_AYrAdFrRfaV4SvG2_to9Q&s", "creationDate": "2024-09-15"},
+    {"id": 4, "userId": 4, "comment": "Comentario 4 ejemplo de una discucion", "image":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyU81N9rykoJF2_AYrAdFrRfaV4SvG2_to9Q&s", "creationDate": "2024-01-15"},
+    {"id": 5, "userId": 5, "comment": "Comentario 5 ejemplo de una discucion", "image":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyU81N9rykoJF2_AYrAdFrRfaV4SvG2_to9Q&s", "creationDate": "2024-03-15"}
+  ],
+
+  "answers": [
+    {"id": 1, "userId": 1,"publicationId": 1, "comment": "comentatario 1 respuesta de publication 1", "creationDate": "2024-03-17"  }
   ]
 }
 

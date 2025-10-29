@@ -2,7 +2,8 @@
   "option": {
     "home": "Inicio",
     "sign-up": "Registrarse",
-    "log-in": "Iniciar Sesión"
+    "log-in": "Iniciar Sesión",
+    "forum": "Forum"
   },
   "iam": {
 
@@ -20,6 +21,16 @@
       "mismatch": "Las contraseñas no coinciden",
       "credentials": "Credenciales no encontradas"
     }
+  },
+
+  "forum": {
+    "title": "Foro de IndieNest "
+  },
+
+  "publication": {
+    "new": "Nueva publicación",
+    "created": "Creado el",
+    "comments": "Ver comentarios"
   }
 
 }
