@@ -1,7 +1,11 @@
 
 .publication-container {
-  max-width: 1000px;
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 50px auto;
   color: white;
 }
 
@@ -12,12 +16,8 @@
 .publication-card{
   background-color: #1A1A1A;
   border: 3px solid #92FF71;
-  min-height: 620px;
+  min-height: 600px;
   min-width: 700px;
-}
-
-.mat-spacer {
-  flex: 1 1 auto;
 }
 
 .profile-avatar {
@@ -32,15 +32,3 @@
   width:650px;
 }
 
-.actions{
-
-  display: flex;
-  flex-direction: column;
-  align-items: normal;
-}
-
-.view-comment-button{
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-}

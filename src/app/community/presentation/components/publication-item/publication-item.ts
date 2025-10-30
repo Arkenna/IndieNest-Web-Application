@@ -2,7 +2,7 @@ import {Component, computed, inject, input} from '@angular/core';
 import {IamStore} from '../../../../iam/application/iam.store';
 import {ProfileStore} from '../../../../profile/application/profile.store';
 import {Publication} from '../../../domain/model/publication.entity';
-
+import {Router} from '@angular/router';
 import {
   MatCardModule, MatCardActions,
   MatCardContent,
@@ -37,6 +37,9 @@ import {DatePipe} from '@angular/common';
   styleUrl: './publication-item.css',
 })
 export class PublicationItem {
+
+  protected router = inject(Router);
+
   publication = input.required<Publication>();
   readonly iamStore = inject(IamStore);
   readonly profileStore = inject(ProfileStore);
@@ -49,6 +52,11 @@ export class PublicationItem {
 
   publicationProfile = computed(()=>
     this.profileStore.profiles().find(p => p.accountId === this.publicationAccount()?.id));
+
+
+  selectPublication(id: number) {
+    this.router.navigate(['community/publication', id]).then();
+  }
 
 
 }
