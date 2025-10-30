@@ -13,6 +13,7 @@ import {
   MatCardTitle
 } from '@angular/material/card';
 import {TranslatePipe} from '@ngx-translate/core';
+import {IamStore} from '../../../../iam/application/iam.store';
 
 @Component({
   selector: 'app-forum',
@@ -28,11 +29,17 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class Forum {
   readonly communityStore = inject(CommunityStore);
+  readonly iamStore = inject(IamStore);
+
   publications = computed(() => this.communityStore.publications());
   protected router = inject(Router);
 
+
   newPublication(){
-    this.router.navigate(['/forum/new-publication']).then();
+    if(this.iamStore.currentAccount)
+      this.router.navigate(['/community/publication/new']).then();
+    else
+      this.router.navigate(['/log-in']).then();
   }
 
 

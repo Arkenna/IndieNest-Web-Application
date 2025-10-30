@@ -15,6 +15,7 @@ import {
 import {MatButton} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {TranslatePipe} from '@ngx-translate/core';
+import {DatePipe} from '@angular/common';
 
 
 @Component({
@@ -29,7 +30,8 @@ import {TranslatePipe} from '@ngx-translate/core';
     MatCardActions,
     MatButton,
     MatIconModule,
-    TranslatePipe
+    TranslatePipe,
+    DatePipe
   ],
   templateUrl: './publication-item.html',
   styleUrl: './publication-item.css',

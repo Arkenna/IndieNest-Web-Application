@@ -27,10 +27,11 @@ const forum = () => import("./community/presentation/views/forum/forum").then(m 
 const baseTitle = "Indie Nest Web Application";
 
 export const routes: Routes = [
+  {path: '', loadComponent: homeView, title: `${baseTitle} - Home`},
   {path: 'sign-up', loadComponent: signUp, title: `${baseTitle} - Sign Up`},
   {path: 'log-in', loadComponent: logIn, title: `${baseTitle} - Log In`},
   {path: 'home', loadComponent: homeView, title: `${baseTitle} - Home`},
-  {path: 'forum', loadComponent: forum, title: `${baseTitle} - Forum`},
+  {path: 'community', loadChildren: () => import('./community/presentation/views/community.routes').then(m=>m.communityRoutes)},
 
 
   { path: 'arts', loadComponent: artsView, title: `${baseTitle} - Arts` },

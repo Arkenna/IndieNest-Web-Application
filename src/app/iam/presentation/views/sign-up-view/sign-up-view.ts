@@ -56,13 +56,13 @@ export class SignUpView {
     if(!this.form.valid) return;
 
     const user: User = new User({
-      id: this.iamStore.userCount(),
+      id: this.iamStore.userCount() + 1,
       name: this.form.value.name!,
       phoneNumber: this.form.value.phoneNumber!
     });
 
     const account = new Account({
-      id: this.iamStore.accountCount(),
+      id: this.iamStore.accountCount() + 1,
       userId: user.id,
       email: this.form.value.email!,
       password: this.form.value.password!,
