@@ -30,7 +30,10 @@
   "publication": {
     "new": "New publication",
     "created": "Created at",
-    "comments": "View comments"
+    "comments": "View comments",
+    "comment": "Comment",
+    "image": "Image",
+    "create": "Create publication"
   }
 
 }

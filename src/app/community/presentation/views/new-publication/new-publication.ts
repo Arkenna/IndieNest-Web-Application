@@ -8,6 +8,7 @@ import {MatLabel} from '@angular/material/form-field';
 import {TranslatePipe} from '@ngx-translate/core';
 import {Publication} from '../../../domain/model/publication.entity';
 import {IamStore} from '../../../../iam/application/iam.store';
+import {MatInput} from '@angular/material/input';
 
 @Component({
   selector: 'app-new-publication',
@@ -18,7 +19,8 @@ import {IamStore} from '../../../../iam/application/iam.store';
     MatFormField,
     MatLabel,
     ReactiveFormsModule,
-    TranslatePipe
+    TranslatePipe,
+    MatInput
   ],
   templateUrl: './new-publication.html',
   styleUrl: './new-publication.css',
@@ -45,6 +47,7 @@ export class NewPublication {
       const reader = new FileReader();
       reader.onload = () => {
         this.form.patchValue({ image: reader.result as string }); // Base64
+        this.preview = reader.result;
       };
       reader.readAsDataURL(file);
     }
@@ -56,16 +59,21 @@ export class NewPublication {
     if(!this.form.valid) return;
 
     const publication = new Publication({
-      id: this.communityStore.publicationCount(),
+      id: this.communityStore.publicationCount() + 1,
       userId: this.iamStore.currentAccount!.userId,
       comment: this.form.value.comment!,
       image: this.form.value.image!,
       creationDate: new Date()
-
     });
 
+    console.log(publication.id);
+    console.log(publication.userId);
+    console.log(publication.comment);
+    console.log(publication.image);
+    console.log(publication.creationDate);
 
-    this.router.navigate(['community/publications']).then();
+    this.communityStore.addPublication(publication);
+    this.router.navigate(['community/forum']).then();
   }
 
 }

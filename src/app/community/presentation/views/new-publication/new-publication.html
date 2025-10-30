@@ -1,37 +1,29 @@
 <div class="form-container">
-  <h1 class="title">New Publication</h1>
+  <h1 class="title">{{"publication.new" | translate}}</h1>
   <form [formGroup]="form" (ngSubmit)="submit()">
 
-    <p class="field-label">Comment</p>
-    <mat-form-field>
-      <mat-label>Comment</mat-label>
-      <textarea
-        id="comment"
-        formControlName="comment"
-        rows="4"
-        class="comment-input"
-      ></textarea>
-    </mat-form-field>
+    <p class="field-label">{{"publication.comment" | translate}}</p>
+    <textarea matInput formControlName="comment"
+              rows="4"
+              class="comment-input" required
+    ></textarea>
 
-    <p class="field-label">Image</p>
-    <mat-form-field>
-      <mat-label>Image</mat-label>
-      <input
-        formControlName="image"
-        type="file"
-        accept="image/*"
-        (change)="onFileSelected($event)"
-      />
-    </mat-form-field>
+
+    <p class="field-label">{{"publication.image" | translate}}</p>
+    <input class="image-input"
+           type="file"
+           accept="image/*"
+           (change)="onFileSelected($event)"/>
+
 
     <div class="preview">
       @if (preview){
-        <img [src]="preview" alt="Vista previa" width="200" />
+        <img [src]="preview"  width="200" />
       }
     </div>
 
     <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
-      Create publication
+      {{"publication.create" | translate}}
     </button>
 
   </form>

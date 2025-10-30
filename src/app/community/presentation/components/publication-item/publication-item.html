@@ -5,15 +5,15 @@
            [alt]="publicationProfile()?.id"
            [src]="publicationProfile()?.image"/>
       <mat-card-title>{{publicationUser()?.name}}</mat-card-title>
-      <mat-card-subtitle> {{"publication.created" | translate}} {{publication().creationDate}}</mat-card-subtitle>
+      <mat-card-subtitle> {{"publication.created" | translate}} {{publication().creationDate | date:'yyyy-MM-dd'}}</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
       <p class="comment">{{publication().comment}}</p>
     </mat-card-content>
-    <img mat-card-image [src]="publication().image" [alt]="publication().id" width="700px">
+    <img mat-card-image [src]="publication().image" [alt]="publication().id" class="card-image">
     <mat-card-actions class="actions">
-      <button matButton>{{"publication.comments" | translate}}</button>
+      <button matButton class="view-comment-button">{{"publication.comments" | translate}}</button>
     </mat-card-actions>
   </mat-card>
 </div>
