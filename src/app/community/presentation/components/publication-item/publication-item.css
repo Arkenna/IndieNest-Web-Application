@@ -1,11 +1,17 @@
 
 .publication-container {
   max-width: 1000px;
-  margin-top: 50px
+  margin-top: 50px;
+  color: white;
+}
+
+.date{
+  color: white;
 }
 
 .publication-card{
-  background-color: #92FF71;
+  background-color: #1A1A1A;
+  border: 3px solid #92FF71;
   min-height: 620px;
   min-width: 700px;
 }
@@ -17,6 +23,7 @@
 .profile-avatar {
   background-size: cover;
   width : 60px;
+  height : 60px;
 }
 
 .card-image{
@@ -33,7 +40,7 @@
 }
 
 .view-comment-button{
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 16px;
 }

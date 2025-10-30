@@ -12,7 +12,7 @@ export class CommunityStore {
   readonly publications = this.publicationsSignal.asReadonly();
 
   private readonly answersSignal = signal<Answer[]>([]);
-  private readonly answers = this.answersSignal.asReadonly();
+  readonly answers = this.answersSignal.asReadonly();
 
   readonly publicationCount = computed(() => this.publications().length);
   readonly answerCount = computed(() => this.answers().length);

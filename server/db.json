@@ -911,6 +911,27 @@
       "publicationId": 1,
       "comment": "comentatario 1 respuesta de publication 1",
       "creationDate": "2024-03-17"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "publicationId": 1,
+      "comment": "qqqqqqqqqqq",
+      "creationDate": "2025-10-30T13:30:10.035Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "publicationId": 1,
+      "comment": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "creationDate": "2025-10-30T13:30:20.635Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "publicationId": 1,
+      "comment": "pepe",
+      "creationDate": "2025-10-30T13:32:45.197Z"
     }
   ]
 }
