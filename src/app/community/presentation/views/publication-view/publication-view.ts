@@ -20,6 +20,7 @@ import {Account} from '../../../../iam/domain/model/account.entity';
 import {Profile} from '../../../../profile/domain/model/profile.entity';
 import {Answer} from '../../../domain/model/answer.entity';
 import {AnswerItem} from '../../components/answer-item/answer-item';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-publication-view',
@@ -35,7 +36,8 @@ import {AnswerItem} from '../../components/answer-item/answer-item';
     MatCardSubtitle,
     MatCardTitle,
     TranslatePipe,
-    AnswerItem
+    AnswerItem,
+    FormsModule
   ],
   templateUrl: './publication-view.html',
   styleUrl: './publication-view.css',
@@ -71,6 +73,44 @@ export class PublicationView {
     this.publicationProfile = this.profileStore.profiles().find(p => p.accountId === this.publicationAccount?.id)
 
     this.answers = this.communityStore.answers().filter(a => a.publicationId === this.currentPublication?.id);
+  }
+
+
+  newComment: string = '';
+  showButtons = false;
+
+  cancelComment() {
+    this.newComment = '';
+    this.showButtons = false;
+  }
+
+  submitComment() {
+    if (!this.newComment.trim()) return;
+
+    if (!this.iamStore.currentAccount)
+      this.router.navigate(['/log-in']).then();
+
+    const authorAccount =this.iamStore.currentAccount;
+    const authorUser = this.iamStore.getUserById(authorAccount!.userId);
+
+    const answer = new Answer({
+      id: this.communityStore.answerCount() + 1,
+      userId: authorUser()!.id,
+      publicationId: this.publicationId!,
+      comment: this.newComment,
+      creationDate: new Date()
+    })
+    this.communityStore.addAnswer(answer);
+
+    this.newComment = '';
+
+    this.router.navigate([`/community/forum`]).then();
+  }
+
+  onBlur(event: FocusEvent) {
+    const target = event.relatedTarget as HTMLElement;
+    if (target && target.closest('.comment-actions')) return;
+    if (!this.newComment.trim()) this.showButtons = false;
   }
 
 
