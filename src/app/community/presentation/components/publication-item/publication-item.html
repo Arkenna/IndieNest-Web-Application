@@ -9,9 +9,16 @@
     </mat-card-header>
 
     <mat-card-content>
-      <p class="comment">{{publication().comment}}</p>
+      <p class="title">{{publication().title}}</p>
+
+      @if (publication().comment){
+        <p class="comment">{{publication().comment}}</p>
+      }
     </mat-card-content>
-    <img mat-card-image [src]="publication().image" [alt]="publication().id" class="card-image">
+
+    @if (publication().image) {
+      <img mat-card-image [src]="publication().image" [alt]="publication().id" class="card-image">
+    }
     <mat-card-actions class="actions">
       <button matButton class="view-comment-button" (click)="selectPublication(publication().id)">{{"publication.comments" | translate}}</button>
     </mat-card-actions>

@@ -9,6 +9,7 @@ export class PublicationAssembler implements BaseAssembler<Publication, Publicat
     return new Publication({
       id: resource.id,
       userId: resource.userId,
+      title: resource.title,
       comment: resource.comment,
       image: resource.image,
       creationDate: resource.creationDate,
@@ -23,6 +24,7 @@ export class PublicationAssembler implements BaseAssembler<Publication, Publicat
     return {
       id: entity.id,
       userId: entity.userId,
+      title: entity.title,
       comment: entity.comment,
       image: entity.image,
       creationDate: entity.creationDate,
