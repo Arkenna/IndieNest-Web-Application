@@ -32,7 +32,7 @@ export class Forum {
   protected router = inject(Router);
 
   newPublication(){
-    this.router.navigate(['/forum/new-publication']).then();
+    this.router.navigate(['/community/publication/new']).then();
   }
 
 
