@@ -2,10 +2,14 @@
   <h1 class="title">{{"publication.new" | translate}}</h1>
   <form [formGroup]="form" (ngSubmit)="submit()">
 
+
+    <p class="field-label">{{"publication.title" | translate}}</p>
+    <input matInput formControlName="title" required class="title-input">
+
     <p class="field-label">{{"publication.comment" | translate}}</p>
     <textarea matInput formControlName="comment"
               rows="4"
-              class="comment-input" required
+              class="comment-input"
     ></textarea>
 
 
@@ -22,9 +26,18 @@
       }
     </div>
 
-    <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
-      {{"publication.create" | translate}}
-    </button>
+    <div class="actions">
+
+      <button mat-raised-button color="primary" class="cancel-button" (click)="cancel()">
+        {{"publication.cancel" | translate}}
+      </button>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
+        {{"publication.create" | translate}}
+      </button>
+    </div>
+
+
 
   </form>
 </div>

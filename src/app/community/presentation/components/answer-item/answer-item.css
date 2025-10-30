@@ -1,6 +1,7 @@
 
 .answer-container {
-  max-width: 1000px;
+  width: auto;
+  height: auto;
   margin-top: 50px;
   color: white;
 }
@@ -12,8 +13,9 @@
 .answer-card{
   background-color: #1A1A1A;
   border: 3px solid #92FF71;
-  min-height: 200px;
-  min-width: 700px;
+
+  width: 700px;
+  height: auto;
 }
 
 .profile-avatar {

@@ -36,8 +36,9 @@ export class NewPublication {
   preview: string | ArrayBuffer | null = null;
 
   form = this.fb.group({
-    comment: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    image: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] })
+    title: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    comment: new FormControl<string>('', { nonNullable: false }),
+    image: new FormControl<string>('', { nonNullable: false })
   });
 
   onFileSelected(event: Event) {
@@ -61,8 +62,9 @@ export class NewPublication {
     const publication = new Publication({
       id: this.communityStore.publicationCount() + 1,
       userId: this.iamStore.currentAccount!.userId,
-      comment: this.form.value.comment!,
-      image: this.form.value.image!,
+      title: this.form.value.title!,
+      comment: this.form.value.comment? this.form.value.comment : null,
+      image: this.form.value.image? this.form.value.image : null,
       creationDate: new Date()
     });
 
@@ -73,6 +75,10 @@ export class NewPublication {
     console.log(publication.creationDate);
 
     this.communityStore.addPublication(publication);
+    this.router.navigate(['community/forum']).then();
+  }
+
+  cancel(){
     this.router.navigate(['community/forum']).then();
   }
 

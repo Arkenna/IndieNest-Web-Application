@@ -9,15 +9,22 @@
     </mat-card-header>
 
     <mat-card-content>
-      <p class="comment">{{currentPublication!.comment}}</p>
-    </mat-card-content>
-    <img mat-card-image [src]="currentPublication!.image" [alt]="currentPublication!.id" class="card-image">
-  </mat-card>
 
+      <p class="title">{{currentPublication!.title}}</p>
+
+      @if (currentPublication!.comment){
+        <p class="comment">{{currentPublication!.comment}}</p>
+      }
+    </mat-card-content>
+
+    @if (currentPublication!.image) {
+      <img mat-card-image [src]="currentPublication!.image" [alt]="currentPublication!.id" class="card-image">
+    }
+  </mat-card>
 
   <div class="comment-input-container">
   <textarea
-    placeholder="Escribe una respuesta..."
+    placeholder="{{'answer.write' | translate}}"
     [(ngModel)]="newComment"
     (focus)="showButtons = true"
     (blur)="onBlur($event)"
@@ -27,8 +34,8 @@
 
     <div class="comment-actions">
       @if (showButtons) {
-        <button mat-stroked-button color="warn" (mousedown)="cancelComment()">Cancelar</button>
-        <button mat-flat-button color="primary" (mousedown)="submitComment()">Comentar</button>
+        <button mat-stroked-button color="warn" (mousedown)="cancelComment()">{{'answer.cancel' | translate}}</button>
+        <button mat-flat-button color="primary" (mousedown)="submitComment()">{{'answer.comment' | translate}}</button>
       }
     </div>
   </div>

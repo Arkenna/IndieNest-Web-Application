@@ -30,10 +30,19 @@
   "publication": {
     "new": "New publication",
     "created": "Created at",
+    "title": "Title",
     "comments": "View comments",
     "comment": "Comment",
     "image": "Image",
-    "create": "Create publication"
+    "create": "Create",
+    "cancel": "Cancel"
+  },
+
+  "answer": {
+    "write": "Write an answer...",
+    "cancel": "Cancel",
+    "comment": "Comment"
   }
+
 
 }

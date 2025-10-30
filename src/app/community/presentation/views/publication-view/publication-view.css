@@ -3,21 +3,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
   margin: 50px auto;
   color: white;
-}
-
-.date{
-  color: white;
+  height: auto;
 }
 
 .publication-card{
+  height: auto;
+  width: 700px;
   background-color: #1A1A1A;
   border: 3px solid #92FF71;
-  min-height: 600px;
-  min-width: 700px;
 }
 
 .profile-avatar {
@@ -26,10 +21,22 @@
   height : 60px;
 }
 
+.title{
+  font-size: 20px;
+}
+
+.date{
+  color: white;
+}
+
+.comment{
+  font-size: 15px;
+}
+
 .card-image{
-  margin: 50px auto;
-  margin-bottom: 10px;
+  margin: 50px auto 20px;
   width:650px;
+  border-radius: 15px;
 }
 
 .comment-input-container {
