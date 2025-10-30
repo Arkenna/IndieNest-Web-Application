@@ -1,0 +1,17 @@
+
+.answer-container {
+  max-width: 1000px;
+  margin-top: 50px
+}
+
+.answer-card{
+  background-color: #92FF71;
+  min-height: 620px;
+  min-width: 700px;
+}
+
+.profile-avatar {
+  background-size: cover;
+  width : 60px;
+}
+
