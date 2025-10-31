@@ -28,7 +28,7 @@
     <p class="field-label">{{"iam.password" | translate}}</p>
     <mat-form-field>
       <mat-label>{{"iam.password" | translate}}</mat-label>
-      <input formControlName="password" required>
+      <input type="password" formControlName="password" required>
       @if(form.get('password')!.touched && form.get('password')!.hasError('required')){
         <mat-error>{{"iam.errors.required" | translate}}</mat-error>
       }
@@ -37,7 +37,7 @@
     <p class="field-label">{{"iam.confirm_password" | translate}}</p>
     <mat-form-field>
       <mat-label>{{"iam.confirm_password" | translate}}</mat-label>
-      <input formControlName="passwordConfirmation" required>
+      <input type="password" formControlName="passwordConfirmation" required>
       @if(form.get('passwordConfirmation')!.touched && form.get('passwordConfirmation')!.hasError('required')){
         <mat-error>{{"iam.errors.required" | translate}}</mat-error>
       }

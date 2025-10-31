@@ -37,6 +37,5 @@ export class Profile implements BaseEntity {
   get groupProjectIds(){return this._groupProjectIds}
 
   set description(value: string){this._description = value;}
-  set creationDate(value: Date){this._creationDate = value;}
   set image(value: string){this._image = value;}
 }

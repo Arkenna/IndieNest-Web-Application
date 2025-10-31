@@ -52,7 +52,7 @@ export class HomeView {
     }),
   ];
 
-  featuredAudio: Audio[] = [
+  /*featuredAudio: Audio[] = [
     new Audio({
       id: 1, authorId: 201, name: 'Synthwave Dreams', description: 'Retro electronic music track.', rating: 4.9, creationDate: new Date('2025-10-22'),
       category: AudioCategory.SOUNDTRACK,
@@ -68,7 +68,7 @@ export class HomeView {
       category: AudioCategory.VOICE_ACTING,
       audioUrl: 'path/to/audio3.ogg', format: 'ogg'
     }),
-  ];
+  ];*/
 
   featuredArt: Art[] = [
 

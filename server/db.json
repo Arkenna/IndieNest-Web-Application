@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Daniel Romero",
-      "phoneNumber": "+51 912345678"
+      "phoneNumber": "+51 284596384"
     },
     {
       "id": 2,
@@ -277,7 +277,7 @@
     },
     {
       "id": 2,
-      "authorId": 5,
+      "authorId": 1,
       "name": "Wilmot Works It Out",
       "description": "Juego de acertijos con mecánicas físicas únicas y minimalistas.",
       "rating": 4,
@@ -288,7 +288,7 @@
     },
     {
       "id": 3,
-      "authorId": 11,
+      "authorId": 1,
       "name": "Star Hammer: The Vanguard Prophecy",
       "description": "Shooter FPS ambientado en una guerra galáctica futurista.",
       "rating": 5,
@@ -299,7 +299,7 @@
     },
     {
       "id": 4,
-      "authorId": 14,
+      "authorId": 1,
       "name": "Echo Blade",
       "description": "Juego tipo metroidvania con un toque de fantasía oscura.",
       "rating": 4,
@@ -310,7 +310,7 @@
     },
     {
       "id": 5,
-      "authorId": 20,
+      "authorId": 1,
       "name": "Pixel Odyssey",
       "description": "Juego sandbox de exploración con arte pixelado y mundos generados.",
       "rating": 5,
@@ -321,7 +321,7 @@
     },
     {
       "id": 6,
-      "authorId": 9,
+      "authorId": 1,
       "name": "Dungeon Rift",
       "description": "Juego RPG de mazmorras con sistema de combate táctico.",
       "rating": 3,
@@ -488,52 +488,52 @@
   "arts": [
     {
       "id": 1,
-      "authorId": 2,
+      "authorId": 1,
       "name": "Retro City",
       "description": "Fan art estilo pixel retro inspirado en videojuegos de los 80.",
       "rating": 5,
       "creationDate": "2023-06-10",
-      "image": "art1.jpg",
+      "image": "https://e1.pxfuel.com/desktop-wallpaper/457/678/desktop-wallpaper-pixel-art-retro-video-game-pixel-art-retro-thumbnail.jpg",
       "category": "PIXEL_ART"
     },
     {
       "id": 2,
-      "authorId": 6,
+      "authorId": 1,
       "name": "Celestial Dream",
       "description": "Concept art de un universo celestial con colores suaves.",
       "rating": 4,
       "creationDate": "2023-07-15",
-      "image": "art2.jpg",
+      "image": "https://www.shutterstock.com/image-vector/captivating-watercolor-artwork-features-vast-600nw-2624984053.jpg",
       "category": "CONCEPT_ART"
     },
     {
       "id": 3,
-      "authorId": 10,
+      "authorId": 1,
       "name": "Hero Awakens",
       "description": "Poster épico de un héroe emergiendo del caos.",
       "rating": 5,
       "creationDate": "2023-08-20",
-      "image": "art3.jpg",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHkkouUsUIr4D9kDpbW1868tQZ0sLyCjm_uxqsamnyUkYyiKAYohmK7mX9LGMXTad6M43Lb1KOueN1sB4E4lRRzBI-ZQP8o_4suyKgGVhkQg4dgZ4XdGuEoghYV8jPL7FCV_DY1TKD8mawy_iVUk8_94LpxcISX7IvfKh9e6z8sHBVuLcoZwsI1Kc/s2727/FFANNUAL2023001_Cov.jpg",
       "category": "POSTER"
     },
     {
       "id": 4,
-      "authorId": 13,
+      "authorId": 1,
       "name": "Forest Spirit",
       "description": "Diseño de personaje inspirado en criaturas del bosque.",
       "rating": 4,
       "creationDate": "2023-09-30",
-      "image": "art4.jpg",
+      "image": "https://i.pinimg.com/236x/98/2e/78/982e785012dd454fe708839654c8a92c.jpg",
       "category": "CHARACTER_DESIGN"
     },
     {
       "id": 5,
-      "authorId": 17,
+      "authorId": 1,
       "name": "Dreamwalker",
       "description": "Fondo surrealista que representa el límite entre sueño y realidad.",
       "rating": 5,
       "creationDate": "2023-10-11",
-      "image": "art5.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReu1xRLf_PzSWxZ5D_v_OrtDf89D6XyicK5A&s",
       "category": "BACKGROUND_DESIGN"
     },
     {
@@ -590,7 +590,7 @@
   "audios": [
     {
       "id": 1,
-      "authorId": 4,
+      "authorId": 1,
       "name": "Nightfall Theme",
       "description": "Banda sonora atmosférica con tonos melancólicos.",
       "rating": 5,
@@ -602,7 +602,7 @@
     },
     {
       "id": 2,
-      "authorId": 8,
+      "authorId": 1,
       "name": "Dream Sequence",
       "description": "Audio ambiental instrumental para juegos de exploración.",
       "rating": 4,
@@ -614,7 +614,7 @@
     },
     {
       "id": 3,
-      "authorId": 16,
+      "authorId": 1,
       "name": "Echoing Depths",
       "description": "Efecto de sonido de cueva con reverberaciones realistas.",
       "rating": 5,
@@ -626,7 +626,7 @@
     },
     {
       "id": 4,
-      "authorId": 19,
+      "authorId": 1,
       "name": "Voice of Dawn",
       "description": "Grabación de voz narrativa para introducciones de juego.",
       "rating": 4,
@@ -660,6 +660,20 @@
         4,
         5,
         6
+      ],
+      "audioIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "artIds": [
+        1,
+        2,
+        3,
+        4,
+        5
       ]
     },
     {
@@ -708,9 +722,7 @@
       ]
     }
   ],
-  "group-projects": {
-
-  },
+  "group-projects": {},
   "profiles": [
     {
       "id": 1,
@@ -942,6 +954,5 @@
       "comment": "Voltwyrm feels like a standard enemy for what was supposed to be a bigger area, but ultimately they didn't have time/ideas for more so they just buffed its stats and made it a boss",
       "creationDate": "2025-10-30T13:32:45.197Z"
     }
-
   ]
 }
