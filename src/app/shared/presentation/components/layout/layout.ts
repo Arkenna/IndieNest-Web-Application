@@ -1,10 +1,12 @@
 
-import {Component, inject} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Component, computed, inject} from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MatToolbar, MatToolbarRow} from '@angular/material/toolbar';
-import {MatButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LanguageSwitcher} from '../language-switcher/language-switcher';
+import {IamStore} from '../../../../iam/application/iam.store';
+import {ProfileStore} from '../../../../profile/application/profile.store';
 
 @Component({
   selector: 'app-layout',
@@ -16,18 +18,39 @@ import {LanguageSwitcher} from '../language-switcher/language-switcher';
     MatButton,
     RouterLinkActive,
     TranslatePipe,
-    LanguageSwitcher,
+    LanguageSwitcher
   ],
   templateUrl: './layout.html',
   styleUrl: './layout.css'
 })
 export class Layout {
 
+  private router = inject(Router);
+
   options = [
     {link: '/home', label: 'option.home'},
+    {link: '/community/forum', label: 'option.forum'},
+  ];
+
+  optional = [
     {link: '/sign-up', label: 'option.sign-up'},
     {link: '/log-in', label: 'option.log-in'},
-    {link: '/community/forum', label: 'option.forum'},
   ]
+
+  readonly iamStore = inject(IamStore);
+  readonly profileStore = inject(ProfileStore);
+
+  currentProfile = computed(() =>
+    this.profileStore.profiles().find(p =>
+    p.accountId === this.iamStore.currentAccount?.id));
+
+  currentUser = computed(() =>
+    this.iamStore.getUserById(this.iamStore.currentAccount?.userId!)());
+
+  selectProfile(){
+    if(!this.iamStore.currentAccount) return;
+    this.router.navigate([`/profile/${this.currentProfile()?.id}`]).then();
+  }
+
 }
 

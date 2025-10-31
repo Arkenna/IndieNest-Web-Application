@@ -28,6 +28,9 @@ export class CommunityStore {
   constructor(private communityApi: CommunityApi ) {
     this.loadPublications();
     this.loadAnswers();
+
+    console.log("LOS JUEGOS SON")
+    console.log("hjhkjh")
   }
 
   get currentPublication(): Publication | undefined {

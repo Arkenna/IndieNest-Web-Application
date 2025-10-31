@@ -6,6 +6,6 @@ export interface ProfileResource extends BaseResource {
   creationDate: Date;
   image: string;
   accountId: number;
-  portfolioId: number;
-  groupProjectIds: number[];
+  portfolioId: number | null;
+  groupProjectIds: number[] | null;
 }
