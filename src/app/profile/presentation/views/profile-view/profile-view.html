@@ -1,19 +1,19 @@
 <div class="profile-container">
 
   <div class="information-container">
-
     <img class="profile-image" src="{{currentProfile()?.image}}" alt="{{currentProfile()?.id}}">
 
     @if(!isEditing){
 
-      <p>{{profileUser()?.name}}</p>
-      <p>{{profileUser()?.phoneNumber}}</p>
+      <p class="name">{{profileUser()?.name}}</p>
+      <p class="phone">{{profileUser()?.phoneNumber}}</p>
       <p class="description">{{currentProfile()?.description}}</p>
 
-      <button mat-raised-button class="edit-button" (click)="enableEdit()">Edit profile</button>
+      @if(profileAccount()?.id === iamStore.currentAccount?.id){
+        <button mat-raised-button class="edit-button" (click)="enableEdit()">Edit profile</button>
+      }
     }
     @else{
-
       <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
 
         <p class="field-label">Name</p>
@@ -42,17 +42,71 @@
 
     }
 
-
   </div>
 
+  <div class="portfolio-folder">
 
-  <div class="portfolio-container">
-    @for (game of portfolioGames(); track game.id) {
-      <div class="game-card">
-        <img class="game-image" src="{{game.image}}" alt="{{game.name}}">
-        <p>{{game.name}}</p>
-      </div>
+    @if(profileAccount()?.id === iamStore.currentAccount?.id){
+      <button mat-raised-button class="add-button-floating" (click)="addProject()">+ Add</button>
     }
-  </div>
 
+    <div class="folder-header">
+      <div class="folder-tab title-tab">Portfolio</div>
+
+      <div class="folder-tabs">
+        <div
+          class="folder-tab"
+          [class.active]="selectedTab === 'games'"
+          (click)="selectTab('games')">
+          Games
+        </div>
+
+        <div
+          class="folder-tab"
+          [class.active]="selectedTab === 'audios'"
+          (click)="selectTab('audios')">
+          Audios
+        </div>
+
+        <div
+          class="folder-tab"
+          [class.active]="selectedTab === 'arts'"
+          (click)="selectTab('arts')">
+          Arts
+        </div>
+      </div>
+    </div>
+
+    <div class="folder-body">
+      <div class="portfolio-content">
+        @if(selectedTab === 'games') {
+          @for (game of portfolioGames(); track game.id) {
+            <div class="project-card">
+              <img class="project-image" [src]="game.image" [alt]="game.name">
+              <p>{{game.name}}</p>
+            </div>
+          }
+        }
+
+        @if(selectedTab === 'audios') {
+          @for (audio of portfolioAudios(); track audio.id) {
+            <div class="project-card">
+              <img class="project-image" [src]="audio.image" [alt]="audio.name">
+              <p>{{audio.name}}</p>
+            </div>
+          }
+        }
+
+        @if(selectedTab === 'arts') {
+          @for (art of portfolioArts(); track art.id) {
+            <div class="project-card">
+              <img class="project-image" [src]="art.image" [alt]="art.name">
+              <p>{{art.name}}</p>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
 </div>
+

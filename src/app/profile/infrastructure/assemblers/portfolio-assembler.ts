@@ -9,7 +9,9 @@ export class PortfolioAssembler implements BaseAssembler<Portfolio, PortfolioRes
     return new Portfolio({
       id: resource.id,
       creationDate: resource.creationDate,
-      gameIds: resource.gameIds
+      gameIds: resource.gameIds,
+      audioIds: resource.audioIds,
+      artIds: resource.artIds,
     });
   }
 
@@ -21,7 +23,9 @@ export class PortfolioAssembler implements BaseAssembler<Portfolio, PortfolioRes
     return {
       id: entity.id,
       creationDate: entity.creationDate,
-      gameIds: entity.gameIds
+      gameIds: entity.gameIds,
+      audioIds: entity.audioIds,
+      artIds: entity.artIds
     } as PortfolioResource;
   }
 
