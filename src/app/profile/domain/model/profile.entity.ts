@@ -7,8 +7,8 @@ export class Profile implements BaseEntity {
   private _creationDate: Date;
   private _image: string;
   private _accountId: number;
-  private _portfolioId: number;
-  private _groupProjectIds: number[];
+  private _portfolioId: number | null;
+  private _groupProjectIds: number[] | null;
 
   constructor(profile: {
     id: number;
@@ -16,8 +16,8 @@ export class Profile implements BaseEntity {
     creationDate: Date;
     image: string;
     accountId: number;
-    portfolioId: number;
-    groupProjectIds: number[];
+    portfolioId: number | null;
+    groupProjectIds: number[] | null;
   }) {
     this._id = profile.id;
     this._description = profile.description;

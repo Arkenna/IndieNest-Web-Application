@@ -61,7 +61,7 @@ export class Project {
     return fallback;
   }
 
-  private loadGames():void {
+  public loadGames():void {
     this.loadingSignal.set(true);
     this.errorSignal.set(null);
     this.projectApi.getGames().pipe(takeUntilDestroyed()).subscribe({

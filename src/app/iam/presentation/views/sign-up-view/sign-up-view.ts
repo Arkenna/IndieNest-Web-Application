@@ -17,6 +17,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatInput} from '@angular/material/input';
+import {Profile} from '../../../../profile/domain/model/profile.entity';
+import {ProfileStore} from '../../../../profile/application/profile.store';
 
 @Component({
   selector: 'app-sign-up-view',
@@ -36,6 +38,7 @@ export class SignUpView {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private iamStore = inject(IamStore);
+  private profileStore = inject(ProfileStore);
 
   form = this.fb.group({
     name: new FormControl<string>('',{ nonNullable: true, validators: [Validators.required] }),
@@ -70,8 +73,20 @@ export class SignUpView {
       role: AccountType.STANDARD
     });
 
+    const profile = new Profile({
+      id: this.profileStore.profileCount() +1,
+      description: "",
+      creationDate: new Date,
+      image: "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      accountId: account.id,
+      portfolioId: null,
+      groupProjectIds: null
+    })
+
     this.iamStore.addUser(user);
     this.iamStore.addAccount(account);
+    this.profileStore.addProfile(profile);
+
     this.router.navigate(['home']).then();
   }
 }

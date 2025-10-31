@@ -273,29 +273,29 @@
       "creationDate": "2024-02-12",
       "price": 14.99,
       "category": "HORROR",
-      "image": "https://images.unsplash.com/photo-1605902711622-cfb43c4437b4"
+      "image": "https://i.ytimg.com/vi/RYQAFlEBCbU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGD8gYihyMA8=&rs=AOn4CLB-iPaxYSLPzOOfZPxqHjA2YzZdqw"
     },
     {
       "id": 2,
       "authorId": 5,
-      "name": "Puzzle Works",
+      "name": "Wilmot Works It Out",
       "description": "Juego de acertijos con mecánicas físicas únicas y minimalistas.",
       "rating": 4,
       "creationDate": "2023-08-22",
       "price": 9.99,
       "category": "PUZZLE",
-      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420"
+      "image": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000096218/85f6d89122120e66aaa53ebbb0461d12983fccf8c35343fbea2eb961aa9195ec"
     },
     {
       "id": 3,
       "authorId": 11,
-      "name": "Star Vanguard",
+      "name": "Star Hammer: The Vanguard Prophecy",
       "description": "Shooter FPS ambientado en una guerra galáctica futurista.",
       "rating": 5,
       "creationDate": "2023-09-10",
       "price": 19.99,
       "category": "FPS",
-      "image": "https://images.unsplash.com/photo-1581091870622-7a3a5c15a3d2"
+      "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/337680/header.jpg?t=1726823616"
     },
     {
       "id": 4,
@@ -306,7 +306,7 @@
       "creationDate": "2023-10-01",
       "price": 17.5,
       "category": "METROIDVANIA",
-      "image": "https://images.unsplash.com/photo-1606112219348-204d7d8b94ee"
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1422570/capsule_616x353.jpg?t=1747238177"
     },
     {
       "id": 5,
@@ -317,7 +317,7 @@
       "creationDate": "2024-03-15",
       "price": 12,
       "category": "SANDBOX",
-      "image": "https://images.unsplash.com/photo-1618354691373-d851c5d3c3a1"
+      "image": "https://m.media-amazon.com/images/I/81pW7aYW6bL.png"
     },
     {
       "id": 6,
@@ -328,7 +328,7 @@
       "creationDate": "2023-05-01",
       "price": 11.99,
       "category": "RPG",
-      "image": "https://images.unsplash.com/photo-1611606063063-379b1a0b91c2"
+      "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/375550/header.jpg?t=1496047035"
     },
     {
       "id": 7,
@@ -361,7 +361,7 @@
       "creationDate": "2023-11-22",
       "price": 10,
       "category": "PUZZLE",
-      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f"
+      "image": "https://play-lh.googleusercontent.com/8_RGjs5CjmyPrxxiXCjcyDfXRCvNtyLkZsxx-tGGd7iWbMKXiO_BHBiW2bET5eqfc4M"
     },
     {
       "id": 10,
@@ -644,14 +644,17 @@
       "category": "SOUNDTRACK"
     }
   ],
-  "porfolios": [
+  "portfolios": [
     {
       "id": 1,
       "creationDate": "2024-03-12",
       "gameIds": [
         1,
-        9,
-        16
+        2,
+        3,
+        4,
+        5,
+        6
       ]
     },
     {
@@ -700,6 +703,9 @@
       ]
     }
   ],
+  "group-projects": {
+
+  },
   "profiles": [
     {
       "id": 1,

@@ -22,6 +22,8 @@ const developersView = () =>
 const gamesView = () =>
   import("./marketplace/presentation/views/games-view/games-view").then(m => m.GamesView);
 
+const profileView = () => import("./profile/presentation/views/profile-view/profile-view").then(m => m.ProfileView);
+
 const forum = () => import("./community/presentation/views/forum/forum").then(m => m.Forum);
 
 const baseTitle = "Indie Nest Web Application";
@@ -31,6 +33,7 @@ export const routes: Routes = [
   {path: 'sign-up', loadComponent: signUp, title: `${baseTitle} - Sign Up`},
   {path: 'log-in', loadComponent: logIn, title: `${baseTitle} - Log In`},
   {path: 'home', loadComponent: homeView, title: `${baseTitle} - Home`},
+  {path: 'profile/:id', loadComponent: profileView, title: `${baseTitle} - Profile`},
   {path: 'community', loadChildren: () => import('./community/presentation/views/community.routes').then(m=>m.communityRoutes)},
 
 

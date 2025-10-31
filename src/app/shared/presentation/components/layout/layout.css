@@ -24,3 +24,32 @@ mat-toolbar-row {
 .options{
   margin-right: 20px;
 }
+
+.profile-avatar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-name{
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.profile-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #92FF71;
+  transition: transform 0.2s ease;
+}
+
+.profile-avatar img:hover {
+  transform: scale(1.1);
+}

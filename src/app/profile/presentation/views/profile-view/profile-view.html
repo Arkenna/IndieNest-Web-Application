@@ -1,1 +1,58 @@
-<p>profile-view works!</p>
+<div class="profile-container">
+
+  <div class="information-container">
+
+    <img class="profile-image" src="{{currentProfile()?.image}}" alt="{{currentProfile()?.id}}">
+
+    @if(!isEditing){
+
+      <p>{{profileUser()?.name}}</p>
+      <p>{{profileUser()?.phoneNumber}}</p>
+      <p class="description">{{currentProfile()?.description}}</p>
+
+      <button mat-raised-button class="edit-button" (click)="enableEdit()">Edit profile</button>
+    }
+    @else{
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
+
+        <p class="field-label">Name</p>
+        <input matInput formControlName="name" required class="normal-input">
+
+        <p class="field-label">Phone</p>
+        <input matInput formControlName="phone" required class="normal-input">
+
+        <p class="field-label">Description</p>
+        <textarea matInput formControlName="description"
+                  rows="4"
+                  class="textarea-input"
+        ></textarea>
+
+        <div class="actions">
+
+          <button mat-raised-button color="primary" class="cancel-button" (click)="cancel()">
+            Cancel
+          </button>
+
+          <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
+            Update
+          </button>
+        </div>
+      </form>
+
+    }
+
+
+  </div>
+
+
+  <div class="portfolio-container">
+    @for (game of portfolioGames(); track game.id) {
+      <div class="game-card">
+        <img class="game-image" src="{{game.image}}" alt="{{game.name}}">
+        <p>{{game.name}}</p>
+      </div>
+    }
+  </div>
+
+</div>
