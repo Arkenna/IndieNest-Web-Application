@@ -7,7 +7,8 @@ export class Project implements BaseEntity{
     name:string,
     description:string,
     creationDate:Date,
-    rating:number
+    rating:number,
+    image: string
   }) {
 
     this._id = project.id;
@@ -16,6 +17,7 @@ export class Project implements BaseEntity{
     this._description = project.description;
     this._creationDate = project.creationDate;
     this._rating = project.rating;
+    this._image = project.image;
   }
   private readonly _id:number;
   private readonly _authorId: number; //author's user id
@@ -23,6 +25,7 @@ export class Project implements BaseEntity{
   private _description:string;
   private readonly _creationDate:Date;
   private _rating:number;
+  private _image: string;
 
   get id():number{
     return this._id;
@@ -42,6 +45,9 @@ export class Project implements BaseEntity{
   get rating():number{
     return this._rating;
   }
+  get image(): string{
+    return this._image;
+  }
 
   set name(name:string){
     this._name = name;
@@ -51,6 +57,9 @@ export class Project implements BaseEntity{
   }
   set rating(rating:number){
     this._rating = rating;
+  }
+  set image(image:string){
+    this._image = image;
   }
 
 }

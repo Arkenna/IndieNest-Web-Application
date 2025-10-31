@@ -597,7 +597,8 @@
       "creationDate": "2024-02-01",
       "audioUrl": "audio1.mp3",
       "format": "mp3",
-      "category": "SOUNDTRACK"
+      "category": "SOUNDTRACK",
+      "image": "https://cdn.pixabay.com/audio/2024/12/10/16-09-48-621_200x200.jpg"
     },
     {
       "id": 2,
@@ -608,7 +609,8 @@
       "creationDate": "2023-09-15",
       "audioUrl": "audio2.mp3",
       "format": "mp3",
-      "category": "INSTRUMENTAL"
+      "category": "INSTRUMENTAL",
+      "image": "https://cdn.pixabay.com/audio/2024/02/24/11-16-48-25_200x200.jpg"
     },
     {
       "id": 3,
@@ -619,7 +621,8 @@
       "creationDate": "2023-08-20",
       "audioUrl": "audio3.wav",
       "format": "wav",
-      "category": "SOUND_EFFECT"
+      "category": "SOUND_EFFECT",
+      "image": "https://cdn.pixabay.com/audio/2024/12/11/22-46-20-405_200x200.jpg"
     },
     {
       "id": 4,
@@ -630,7 +633,8 @@
       "creationDate": "2023-07-11",
       "audioUrl": "audio4.mp3",
       "format": "mp3",
-      "category": "VOICE_ACTING"
+      "category": "VOICE_ACTING",
+      "image": "https://cdn.pixabay.com/audio/2022/11/02/07-14-11-711_200x200.jpg"
     },
     {
       "id": 5,
@@ -641,7 +645,8 @@
       "creationDate": "2023-11-23",
       "audioUrl": "audio5.mp3",
       "format": "mp3",
-      "category": "SOUNDTRACK"
+      "category": "SOUNDTRACK",
+      "image": "https://cdn.pixabay.com/audio/2022/11/04/22-21-08-931_200x200.jpg"
     }
   ],
   "portfolios": [

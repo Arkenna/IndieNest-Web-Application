@@ -16,6 +16,7 @@ export class AudioAssembler implements BaseAssembler<Audio, AudioResource, Audio
       audioUrl:resource.audioUrl,
       format:resource.format,
       category:resource.category,
+      image:resource.image,
     });
   }
   toEntitiesFromResponse(response: AudiosResponse){
@@ -33,6 +34,7 @@ export class AudioAssembler implements BaseAssembler<Audio, AudioResource, Audio
       audioUrl:entity.audioUrl,
       format:entity.format,
       category:entity.category,
+      image:entity.image,
     } as AudioResource;
   }
 }

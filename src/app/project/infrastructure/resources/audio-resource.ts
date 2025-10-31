@@ -10,5 +10,6 @@ export interface AudioResource extends BaseResource{
   creationDate:Date,
   audioUrl:string,
   format:string,
-  category: AudioCategory
+  category: AudioCategory,
+  image: string,
 }

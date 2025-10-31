@@ -9,6 +9,7 @@ export class Audio extends Project{
     description:string,
     rating:number,
     creationDate:Date,
+    image:string,
     audioUrl:string,
     format:string,
     category: AudioCategory
@@ -20,7 +21,8 @@ export class Audio extends Project{
       name: audio.name,
       description: audio.description,
       rating: audio.rating,
-      creationDate: audio.creationDate
+      creationDate: audio.creationDate,
+      image: audio.image
     });
     this._audioUrl=audio.audioUrl;
     this._format=audio.format;
