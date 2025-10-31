@@ -20,22 +20,15 @@ export class Art extends Project {
       name: art.name,
       description: art.description,
       rating: art.rating,
-      creationDate: art.creationDate
+      creationDate: art.creationDate,
+      image: art.image
     });
 
-    this._image=art.image;
     this._category=art.category;
   }
 
-  private _image:string;
   private _category: ArtCategory;
 
-  get image():string{
-    return this._image;
-  }
-  set image(image:string){
-    this._image = image;
-  }
 
   get category():ArtCategory{
     return this._category;
