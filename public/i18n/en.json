@@ -91,6 +91,17 @@
     "featured-audios": "Featured audios",
     "featured-arts": "Featured arts",
     "view-all": "View all"
+  },
+  "project-view": {
+    "results": "Results",
+    "best-rated": "Best Rated",
+    "new": "New",
+    "not-found": {
+      "art": "Not artworks found",
+      "game": "Not games found",
+      "audio": "Not audios found",
+      "try": "Try another keyword"
+    }
   }
 
 }

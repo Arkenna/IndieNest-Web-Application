@@ -90,6 +90,17 @@
     "featured-audios": "Audios destacados",
     "featured-arts": "Artes destacados",
     "view-all": "Ver todos"
+  },
+  "project-view": {
+    "results": "Resultados",
+    "best-rated": "Mejor valorados",
+    "new": "Nuevos",
+    "not-found": {
+      "art": "Artes no encontrados",
+      "game": "Juegos no encontrados",
+      "audio": "Audios no encontrados",
+      "try": "Prueba otra búsqueda"
+    }
   }
 
 }

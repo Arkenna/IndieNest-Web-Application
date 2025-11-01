@@ -1,10 +1,6 @@
 import {Component, computed, inject, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-import { ArtItem } from '../../components/art-item/art-item';
-import { Art } from '../../../../project/domain/model/art.entity';
-import { ArtCategory } from '../../../../project/domain/model/art-category';
 import {Project} from '../../../../project/application/project.store';
 import {TranslatePipe} from '@ngx-translate/core';
 
@@ -15,7 +11,6 @@ import {TranslatePipe} from '@ngx-translate/core';
     CommonModule,
     RouterLink,
     RouterLinkActive,
-    ArtItem,
     TranslatePipe
   ],
   templateUrl: './arts-view.html',
@@ -28,10 +23,6 @@ export class ArtsView {
 
   bestRatedArts = computed(() =>
     [...this.arts()].sort((a, b) => b.rating - a.rating)
-  );
-
-  trendingArts = computed(() =>
-    this.bestRatedArts()
   );
 
   newArts = computed(() => {
@@ -59,7 +50,6 @@ export class ArtsView {
   });
 
   onSearch() {
-    // opcional: podrías desplazar al área principal o hacer otra acción
     console.log('Buscando:', this.searchTerm());
   }
 
