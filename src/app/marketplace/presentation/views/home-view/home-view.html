@@ -13,7 +13,6 @@
       @for (option of marketplaceOptions; track option.label) {
         <a routerLink="{{option.link}}" routerLinkActive="active" class="menu-button">{{option.label | translate}}</a>
       }
-
     </nav>
   </aside>
 
@@ -68,7 +67,6 @@
     <section class="carousel-row">
       <div class="carousel-header">
         <h2>{{"marketplace.developers" | translate}}</h2>
-        <a routerLink="/marketplace/developers" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
       </div>
       <div class="carousel-content">
         @for (developer of developers(); track developer.id) {
