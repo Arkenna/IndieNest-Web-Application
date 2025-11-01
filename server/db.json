@@ -785,62 +785,6 @@
       ]
     }
   ],
-  "groupProjects": [
-    {
-      "id": 1,
-      "memberIds": [
-        1,
-        2,
-        4
-      ],
-      "gameId": 1
-    },
-    {
-      "id": 2,
-      "memberIds": [
-        2,
-        3,
-        5
-      ],
-      "gameId": 3
-    },
-    {
-      "id": 3,
-      "memberIds": [
-        1,
-        4,
-        5
-      ],
-      "gameId": 4
-    },
-    {
-      "id": 4,
-      "memberIds": [
-        3,
-        4,
-        5
-      ],
-      "gameId": 5
-    },
-    {
-      "id": 5,
-      "memberIds": [
-        1,
-        2,
-        3
-      ],
-      "gameId": 6
-    },
-    {
-      "id": 6,
-      "memberIds": [
-        2,
-        3,
-        4
-      ],
-      "gameId": 7
-    }
-  ],
   "reviews": [
     {
       "id": 1,

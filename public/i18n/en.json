@@ -58,7 +58,28 @@
     "audios": "Audios",
     "arts": "Arts",
     "new": "+ Add"
+  },
+  "new-project": {
+    "title": "New Project",
+    "name": "Name",
+    "description": "Description",
+    "type": "Project type",
+    "category": "Category",
+    "image": "Image",
+    "cancel": "Cancel",
+    "create": "Create"
+  },
+  "game": {
+    "name": "Game",
+    "price": "Price"
+  },
+  "audio": {
+    "name": "Audio",
+    "url": "Audio url",
+    "format": "Format"
+  },
+  "art": {
+    "name": "Art"
   }
-
 
 }

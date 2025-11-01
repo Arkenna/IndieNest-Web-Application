@@ -30,6 +30,7 @@ export class ProfileView {
   readonly iamStore = inject(IamStore);
   readonly projectStore = inject(Project);
 
+
   readonly profileId = signal<number | null>(null);
 
   constructor() {

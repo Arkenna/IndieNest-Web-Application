@@ -67,13 +67,6 @@ export class NewPublication {
       image: this.form.value.image? this.form.value.image : null,
       creationDate: new Date()
     });
-
-    console.log(publication.id);
-    console.log(publication.userId);
-    console.log(publication.comment);
-    console.log(publication.image);
-    console.log(publication.creationDate);
-
     this.communityStore.addPublication(publication);
     this.router.navigate(['community/forum']).then();
   }
