@@ -116,7 +116,7 @@
       "email": "lucia.paredes@example.com",
       "password": "123",
       "isActive": true,
-      "role": "ARTIST"
+      "role": "PROGRAMMER"
     },
     {
       "id": 3,
@@ -124,7 +124,7 @@
       "email": "carlos.mendez@example.com",
       "password": "123",
       "isActive": false,
-      "role": "STANDARD"
+      "role": "PROGRAMMER"
     },
     {
       "id": 4,

@@ -7,5 +7,5 @@ export interface AccountResource extends BaseResource {
   email: string;
   password: string;
   isActive: boolean;
-  role: AccountType
+  role: string
 }

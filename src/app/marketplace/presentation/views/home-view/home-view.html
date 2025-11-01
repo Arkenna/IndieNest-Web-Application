@@ -10,56 +10,74 @@
       />
     </div>
     <nav class="nav-menu">
-      <a routerLink="/audios" routerLinkActive="active" class="menu-button">Audio</a>
-      <a routerLink="/arts" routerLinkActive="active" class="menu-button">Art</a>
-      <a routerLink="/games" routerLinkActive="active" class="menu-button">Games</a>
-      <a routerLink="/developers" routerLinkActive="active" class="menu-button">Developers</a>
+      @for (option of marketplaceOptions; track option.label) {
+        <a routerLink="{{option.link}}" routerLinkActive="active" class="menu-button">{{option.label | translate}}</a>
+      }
+
     </nav>
   </aside>
 
-
   <main class="content-area">
 
-
     <section class="carousel-row">
       <div class="carousel-header">
-        <h2>Featured games</h2>
-        <a href="#">View all</a>
+        <h2>{{"marketplace.featured-games" | translate}}</h2>
+        <a routerLink="/marketplace/games" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
       </div>
       <div class="carousel-content">
-        @for (game of featuredGames; track game.id) {
-
-          <app-game-item [game]="game"></app-game-item>
+        @for (game of games(); track game.id) {
+          <div class="project-container">
+            <img class="project-image" alt="{{game.name}}" src="{{game.image}}">
+            <p class="project-name">{{game.name}}</p>
+          </div>
         }
       </div>
     </section>
 
     <section class="carousel-row">
       <div class="carousel-header">
-        <h2>Featured audio</h2>
-        <a href="#">View all</a>
-      </div>
-      <!--<div class="carousel-content">
-        @for (audio of featuredAudio; track audio.id) {
-          &lt;!&ndash; CORREGIDO: USA [audio] &ndash;&gt;
-          <app-audio-item [audio]="audio"></app-audio-item>
-        }
-      </div>-->
-    </section>
-
-
-    <section class="carousel-row">
-      <div class="carousel-header">
-        <h2>Featured art</h2>
-        <a href="#">View all</a>
+        <h2>{{"marketplace.featured-audios" | translate}}</h2>
+        <a routerLink="/marketplace/audios" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
       </div>
       <div class="carousel-content">
-        @for (art of featuredArt; track art.id) {
+        @for (audio of audios(); track audio.id) {
+          <div class="project-container">
+            <img class="project-image" alt="{{audio.name}}" src="{{audio.image}}">
+            <p class="project-name">{{audio.name}}</p>
+          </div>
+        }
+      </div>
 
-          <app-art-item [art]="art"></app-art-item>
+    </section>
+
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"marketplace.featured-arts" | translate}}</h2>
+        <a routerLink="/marketplace/arts" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
+      </div>
+      <div class="carousel-content">
+        @for (art of arts(); track art.id) {
+          <div class="project-container">
+            <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
+            <p class="project-name">{{art.name}}</p>
+          </div>
         }
       </div>
     </section>
 
+    <section class="carousel-row">
+      <div class="carousel-header">
+        <h2>{{"marketplace.developers" | translate}}</h2>
+        <a routerLink="/marketplace/developers" routerLinkActive="active">{{"marketplace.view-all" | translate}}</a>
+      </div>
+      <div class="carousel-content">
+        @for (developer of developers(); track developer.id) {
+          <div class="project-container">
+            <img class="project-image" alt="{{developer.id}}" src="{{developer.image}}">
+            <p class="project-name">{{getDeveloperUser(developer)()?.name}}</p>
+          </div>
+        }
+      </div>
+    </section>
   </main>
 </div>

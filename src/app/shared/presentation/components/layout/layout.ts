@@ -28,7 +28,7 @@ export class Layout {
   private router = inject(Router);
 
   options = [
-    {link: '/home', label: 'option.home'},
+    {link: '/marketplace/home', label: 'option.home'},
     {link: '/community/forum', label: 'option.forum'},
   ];
 
