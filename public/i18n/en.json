@@ -42,6 +42,22 @@
     "write": "Write an answer...",
     "cancel": "Cancel",
     "comment": "Comment"
+  },
+
+  "profile":{
+    "edit": "Edit profile",
+    "cancel": "Cancel",
+    "update": "Update",
+    "name": "Name",
+    "phone": "Phone",
+    "description": "Description"
+  },
+  "portfolio": {
+    "name": "Portfolio",
+    "games": "Games",
+    "audios": "Audios",
+    "arts": "Arts",
+    "new": "+ Add"
   }
 
 
