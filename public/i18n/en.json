@@ -86,11 +86,36 @@
     "games": "Games",
     "audios": "Audios",
     "arts": "Arts",
-    "developers": "Developers",
+    "profiles": "Profiles",
     "featured-games": "Featured games",
     "featured-audios": "Featured audios",
     "featured-arts": "Featured arts",
     "view-all": "View all"
+  },
+  "project-view": {
+    "results": "Results",
+    "best-rated": "Best Rated",
+    "new": "New",
+    "not-found": {
+      "art": "Not artworks found",
+      "game": "Not games found",
+      "audio": "Not audios found",
+      "try": "Try another keyword"
+    }
+  },
+  "profile-view": {
+    "results": "Results",
+    "standard": "Standard",
+    "developer": "Developers",
+    "artist": "Artists",
+    "composer": "Composers",
+    "not-found": {
+      "profile": "Not profile found",
+      "try": "Try another keyword"
+    }
+  },
+  "placeholder": {
+    "search": "Search"
   }
 
 }

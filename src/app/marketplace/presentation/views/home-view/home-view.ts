@@ -31,18 +31,14 @@ export class HomeView {
   games = computed(() => this.projectStore.games());
   arts = computed(() => this.projectStore.arts());
   audios = computed(() => this.projectStore.audios());
-
-  developers = computed(() => this.profileStore.profiles().filter(p =>
-      this.iamStore.accounts().find(a => p.accountId === a.id)?.role === AccountType.PROGRAMMER
-    )
-  )
+  profiles = computed(() => this.profileStore.profiles())
 
 
   marketplaceOptions = [
     {link: "/marketplace/games", label: "marketplace.games"},
     {link: "/marketplace/arts", label: "marketplace.arts"},
     {link: "/marketplace/audios", label: "marketplace.audios"},
-    {link: "/marketplace/developers", label: "marketplace.developers"},
+    {link: "/marketplace/profiles", label: "marketplace.profiles"},
   ]
 
 
