@@ -37,7 +37,7 @@ export class GamesView {
     {link: "/marketplace/games", label: "marketplace.games"},
     {link: "/marketplace/arts", label: "marketplace.arts"},
     {link: "/marketplace/audios", label: "marketplace.audios"},
-    {link: "/marketplace/developers", label: "marketplace.developers"},
+    {link: "/marketplace/profiles", label: "marketplace.profiles"},
   ]
 
   searchTerm = signal('');

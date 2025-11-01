@@ -6,7 +6,7 @@
       <input
         type="text"
         class="search-input"
-        placeholder="Search"
+        [placeholder]="'placeholder.search' | translate"
       />
     </div>
     <nav class="nav-menu">
@@ -66,13 +66,13 @@
 
     <section class="carousel-row">
       <div class="carousel-header">
-        <h2>{{"marketplace.developers" | translate}}</h2>
+        <h2>{{"marketplace.profiles" | translate}}</h2>
       </div>
       <div class="carousel-content">
-        @for (developer of developers(); track developer.id) {
-          <div class="project-container">
-            <img class="project-image" alt="{{developer.id}}" src="{{developer.image}}">
-            <p class="project-name">{{getDeveloperUser(developer)()?.name}}</p>
+        @for (profile of profiles(); track profile.id) {
+          <div class="profile-container">
+            <img class="profile-image" alt="{{profile.id}}" src="{{profile.image}}">
+            <p class="profile-name">{{getDeveloperUser(profile)()?.name}}</p>
           </div>
         }
       </div>

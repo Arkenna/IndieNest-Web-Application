@@ -5,7 +5,7 @@
       <input
         type="text"
         class="search-input"
-        placeholder="Search"
+        [placeholder]="'placeholder.search' | translate"
         [value]="searchTerm()"
         (input)="searchTerm.set($any($event.target).value)"
         (keyup.enter)="onSearch()"

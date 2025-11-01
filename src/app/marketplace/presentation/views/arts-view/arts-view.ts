@@ -35,14 +35,14 @@ export class ArtsView {
     {link: "/marketplace/games", label: "marketplace.games"},
     {link: "/marketplace/arts", label: "marketplace.arts"},
     {link: "/marketplace/audios", label: "marketplace.audios"},
-    {link: "/marketplace/developers", label: "marketplace.developers"},
+    {link: "/marketplace/profiles", label: "marketplace.profiles"},
   ]
 
   searchTerm = signal('');
 
   filteredArts = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
-    if (!term) return this.arts(); // si está vacío, devuelve todos
+    if (!term) return this.arts();
 
     return this.arts().filter(art =>
       art.name.toLowerCase().includes(term)
