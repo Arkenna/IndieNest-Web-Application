@@ -80,6 +80,16 @@
   },
   "art": {
     "name": "Arte"
+  },
+  "marketplace": {
+    "games": "Juegos",
+    "audios": "Audios",
+    "arts": "Artes",
+    "developers": "Desarrolladores",
+    "featured-games": "Juegos destacados",
+    "featured-audios": "Audios destacados",
+    "featured-arts": "Artes destacados",
+    "view-all": "Ver todos"
   }
 
 }

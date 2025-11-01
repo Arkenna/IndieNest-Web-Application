@@ -2,11 +2,9 @@ import {BaseAssembler} from '../../../shared/infrastructure/base-assembler';
 import {AccountResource} from '../resources/account-resource';
 import {AccountsResponse} from '../responses/accounts-response';
 import {Account} from '../../domain/model/account.entity';
-import {UserAssembler} from './user-assembler';
+import {AccountType} from '../../domain/model/account-type';
 
 export class AccountAssembler implements BaseAssembler<Account, AccountResource, AccountsResponse> {
-
-  constructor(private userAssembler = new UserAssembler()) {}
 
   toEntityFromResource(resource: AccountResource){
     return new Account({
@@ -15,7 +13,7 @@ export class AccountAssembler implements BaseAssembler<Account, AccountResource,
       email: resource.email,
       password: resource.password,
       isActive: resource.isActive,
-      role: resource.role
+      role: AccountType[resource.role as keyof typeof AccountType]
     })
   }
   toEntitiesFromResponse(response: AccountsResponse) {
@@ -29,7 +27,7 @@ export class AccountAssembler implements BaseAssembler<Account, AccountResource,
       email: entity.email,
       password: entity.password,
       isActive: entity.isActive,
-      role: entity.role
+      role: AccountType[entity.role]
     } as AccountResource;
   }
 }
