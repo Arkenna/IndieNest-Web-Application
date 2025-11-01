@@ -42,6 +42,44 @@
     "write": "Escribe una respuesta...",
     "cancel": "Cancelar",
     "comment": "Comentar"
+  },
+
+  "profile":{
+    "edit": "Editar perfil",
+    "cancel": "Cancelar",
+    "update": "Actualizar",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "description": "Descripción"
+  },
+  "portfolio": {
+    "name": "Portafolio",
+    "games": "Juegos",
+    "audios": "Audios",
+    "arts": "Artes",
+    "new": "+ Añadir"
+  },
+  "new-project": {
+    "title": "Nuevo Proyecto",
+    "name": "Nombre",
+    "description": "Descripción",
+    "type": "Tipo de proyecto",
+    "category": "Categoría",
+    "image": "Imagen",
+    "cancel": "Cancelar",
+    "create": "Crear"
+  },
+  "game": {
+    "name": "Juego",
+    "price": "Precio"
+  },
+  "audio": {
+    "name": "Audio",
+    "url": "Url del audio",
+    "format": "Formato"
+  },
+  "art": {
+    "name": "Arte"
   }
 
 }

@@ -26,6 +26,8 @@ const profileView = () => import("./profile/presentation/views/profile-view/prof
 
 const forum = () => import("./community/presentation/views/forum/forum").then(m => m.Forum);
 
+const newProjectView = () => import("./project/presentation/views/new-project-view/new-project-view").then(m => m.NewProjectView);
+
 const baseTitle = "Indie Nest Web Application";
 
 export const routes: Routes = [
@@ -35,6 +37,7 @@ export const routes: Routes = [
   {path: 'home', loadComponent: homeView, title: `${baseTitle} - Home`},
   {path: 'profile/:id', loadComponent: profileView, title: `${baseTitle} - Profile`},
   {path: 'community', loadChildren: () => import('./community/presentation/views/community.routes').then(m=>m.communityRoutes)},
+  {path: 'project/new/:id', loadComponent: newProjectView, title: `${baseTitle} - New Project`},
 
 
   { path: 'arts', loadComponent: artsView, title: `${baseTitle} - Arts` },

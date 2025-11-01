@@ -30,6 +30,7 @@ export class ProfileView {
   readonly iamStore = inject(IamStore);
   readonly projectStore = inject(Project);
 
+
   readonly profileId = signal<number | null>(null);
 
   constructor() {
@@ -123,6 +124,6 @@ export class ProfileView {
   }
 
   addProject(){
-    this.router.navigate(['/project/new']).then();
+    this.router.navigate([`/project/new/${this.profileAccount()?.id}`]).then();
   }
 }

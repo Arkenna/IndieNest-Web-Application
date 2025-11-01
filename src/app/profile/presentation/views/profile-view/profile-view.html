@@ -10,19 +10,19 @@
       <p class="description">{{currentProfile()?.description}}</p>
 
       @if(profileAccount()?.id === iamStore.currentAccount?.id){
-        <button mat-raised-button class="edit-button" (click)="enableEdit()">Edit profile</button>
+        <button mat-raised-button class="edit-button" (click)="enableEdit()">{{"profile.edit" | translate}}</button>
       }
     }
     @else{
       <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
 
-        <p class="field-label">Name</p>
+        <p class="field-label">{{"profile.name" | translate}}</p>
         <input matInput formControlName="name" required class="normal-input">
 
-        <p class="field-label">Phone</p>
+        <p class="field-label">{{"profile.phone" | translate}}</p>
         <input matInput formControlName="phone" required class="normal-input">
 
-        <p class="field-label">Description</p>
+        <p class="field-label">{{"profile.description" | translate}}</p>
         <textarea matInput formControlName="description"
                   rows="4"
                   class="textarea-input"
@@ -31,11 +31,11 @@
         <div class="actions">
 
           <button mat-raised-button color="primary" class="cancel-button" (click)="cancel()">
-            Cancel
+            {{ "profile.cancel" | translate}}
           </button>
 
           <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
-            Update
+            {{ "profile.update" | translate}}
           </button>
         </div>
       </form>
@@ -47,32 +47,32 @@
   <div class="portfolio-folder">
 
     @if(profileAccount()?.id === iamStore.currentAccount?.id){
-      <button mat-raised-button class="add-button-floating" (click)="addProject()">+ Add</button>
+      <button mat-raised-button class="add-button-floating" (click)="addProject()">{{"portfolio.new" | translate}}</button>
     }
 
     <div class="folder-header">
-      <div class="folder-tab title-tab">Portfolio</div>
+      <div class="folder-tab title-tab">{{"portfolio.name" | translate}}</div>
 
       <div class="folder-tabs">
         <div
           class="folder-tab"
           [class.active]="selectedTab === 'games'"
           (click)="selectTab('games')">
-          Games
+          {{"portfolio.games" | translate}}
         </div>
 
         <div
           class="folder-tab"
           [class.active]="selectedTab === 'audios'"
           (click)="selectTab('audios')">
-          Audios
+          {{"portfolio.audios" | translate}}
         </div>
 
         <div
           class="folder-tab"
           [class.active]="selectedTab === 'arts'"
           (click)="selectTab('arts')">
-          Arts
+          {{"portfolio.arts" | translate}}
         </div>
       </div>
     </div>

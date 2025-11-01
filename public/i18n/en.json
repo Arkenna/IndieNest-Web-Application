@@ -42,7 +42,44 @@
     "write": "Write an answer...",
     "cancel": "Cancel",
     "comment": "Comment"
-  }
+  },
 
+  "profile":{
+    "edit": "Edit profile",
+    "cancel": "Cancel",
+    "update": "Update",
+    "name": "Name",
+    "phone": "Phone",
+    "description": "Description"
+  },
+  "portfolio": {
+    "name": "Portfolio",
+    "games": "Games",
+    "audios": "Audios",
+    "arts": "Arts",
+    "new": "+ Add"
+  },
+  "new-project": {
+    "title": "New Project",
+    "name": "Name",
+    "description": "Description",
+    "type": "Project type",
+    "category": "Category",
+    "image": "Image",
+    "cancel": "Cancel",
+    "create": "Create"
+  },
+  "game": {
+    "name": "Game",
+    "price": "Price"
+  },
+  "audio": {
+    "name": "Audio",
+    "url": "Audio url",
+    "format": "Format"
+  },
+  "art": {
+    "name": "Art"
+  }
 
 }
