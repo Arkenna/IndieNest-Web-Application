@@ -9,6 +9,7 @@ const logIn = () =>
 const homeView=()=>
   import("./marketplace/presentation/views/home-view/home-view").then(m => m.HomeView);
 
+const IdProjectView=()=>import("./project/presentation/views/project-view/project-view").then(m => m.ProjectView);
 const profileView = () => import("./profile/presentation/views/profile-view/profile-view").then(m => m.ProfileView);
 
 const newProjectView = () => import("./project/presentation/views/new-project-view/new-project-view").then(m => m.NewProjectView);
@@ -23,6 +24,6 @@ export const routes: Routes = [
   {path: 'profile/:id', loadComponent: profileView, title: `${baseTitle} - Profile`},
   {path: 'community', loadChildren: () => import('./community/presentation/views/community.routes').then(m=>m.communityRoutes)},
   {path: 'project/new/:id', loadComponent: newProjectView, title: `${baseTitle} - New Project`},
-
+  {path: 'project/view/:type/:id', loadComponent: IdProjectView, title: `${baseTitle} - Project View`},
 
 ];
