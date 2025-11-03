@@ -28,7 +28,7 @@
       <div class="carousel-content">
         @if (filteredProfiles().length > 0) {
           @for (profile of filteredProfiles(); track profile.id) {
-            <div class="profile-container">
+            <div class="profile-container" [routerLink]="['/profile', profile.id]">
               <img class="profile-image" alt="{{getProfileUser(profile).name}}" src="{{profile.image}}">
               <p class="profile-name">{{getProfileUser(profile).name}}</p>
             </div>
@@ -50,7 +50,7 @@
       <div class="carousel-content">
 
         @for (standard of standards(); track standard.id) {
-          <div class="profile-container">
+          <div class="profile-container" [routerLink]="['/profile', standard.id]">
             <img class="profile-image" alt="{{getProfileUser(standard).name}}" src="{{standard.image}}">
             <p class="profile-name">{{getProfileUser(standard).name}}</p>
           </div>
@@ -65,7 +65,7 @@
       <div class="carousel-content">
 
         @for (developer of developers(); track developer.id) {
-          <div class="profile-container">
+          <div class="profile-container" [routerLink]="['/profile', developer.id]">
             <img class="profile-image" alt="{{getProfileUser(developer).name}}" src="{{developer.image}}">
             <p class="profile-name">{{getProfileUser(developer).name}}</p>
           </div>
@@ -80,7 +80,7 @@
       <div class="carousel-content">
 
         @for (artist of artists(); track artist.id) {
-          <div class="profile-container">
+          <div class="profile-container" [routerLink]="['/profile', artist.id]">
             <img class="profile-image" alt="{{getProfileUser(artist).name}}" src="{{artist.image}}">
             <p class="profile-name">{{getProfileUser(artist).name}}</p>
           </div>
@@ -95,7 +95,7 @@
       <div class="carousel-content">
 
         @for (composer of composers(); track composer.id) {
-          <div class="profile-container">
+          <div class="profile-container" [routerLink]="['/profile', composer.id]">
             <img class="profile-image" alt="{{getProfileUser(composer).name}}" src="{{composer.image}}">
             <p class="profile-name">{{getProfileUser(composer).name}}</p>
           </div>
