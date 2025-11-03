@@ -57,6 +57,11 @@ export class SupportStore {
     return computed(()=> id? this.reviews().find(u => u.id === id):undefined);
   }
 
+  getReviewsByProjectId(projectId: number): Signal<Review[]> {
+    return computed(() =>
+      this.reviews().filter(r => r.projectId === projectId)
+    );
+  }
   addReview(review: Review): void  {
     this.loadingSignal.set(true);
     this.errorSignal.set(null);
