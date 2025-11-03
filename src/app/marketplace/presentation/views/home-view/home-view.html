@@ -25,7 +25,7 @@
       </div>
       <div class="carousel-content">
         @for (game of games(); track game.id) {
-          <div class="project-container">
+          <div class="project-container" [routerLink]="['/project/view', 'game', game.id]">
             <img class="project-image" alt="{{game.name}}" src="{{game.image}}">
             <p class="project-name">{{game.name}}</p>
           </div>
@@ -40,7 +40,7 @@
       </div>
       <div class="carousel-content">
         @for (audio of audios(); track audio.id) {
-          <div class="project-container">
+          <div class="project-container" [routerLink]="['/project/view', 'audio', audio.id]">
             <img class="project-image" alt="{{audio.name}}" src="{{audio.image}}">
             <p class="project-name">{{audio.name}}</p>
           </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="carousel-content">
         @for (art of arts(); track art.id) {
-          <div class="project-container">
+          <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
             <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
             <p class="project-name">{{art.name}}</p>
           </div>
@@ -70,7 +70,7 @@
       </div>
       <div class="carousel-content">
         @for (profile of profiles(); track profile.id) {
-          <div class="profile-container">
+          <div class="profile-container" [routerLink]="['/profile', profile.id]">
             <img class="profile-image" alt="{{profile.id}}" src="{{profile.image}}">
             <p class="profile-name">{{getDeveloperUser(profile)()?.name}}</p>
           </div>
