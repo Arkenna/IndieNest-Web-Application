@@ -28,7 +28,7 @@
       <div class="carousel-content">
         @if (filteredArts().length > 0) {
           @for (art of filteredArts(); track art.id) {
-            <div class="project-container">
+            <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
               <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
               <p class="project-name">{{art.name}}</p>
             </div>
@@ -50,7 +50,7 @@
       <div class="carousel-content">
 
         @for (art of bestRatedArts(); track art.id) {
-          <div class="project-container">
+          <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
             <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
             <p class="project-name">{{art.name}} - {{art.rating}} stars</p>
           </div>
@@ -65,7 +65,7 @@
       <div class="carousel-content">
 
         @for (art of newArts(); track art.id) {
-          <div class="project-container">
+          <div class="project-container" [routerLink]="['/project/view', 'art', art.id]">
             <img class="project-image" alt="{{art.name}}" src="{{art.image}}">
             <p class="project-name">{{art.name}} - {{art.creationDate | date: "mediumDate"}}</p>
           </div>
