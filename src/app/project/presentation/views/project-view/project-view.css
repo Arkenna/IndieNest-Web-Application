@@ -1,10 +1,8 @@
-/* src/app/project/presentation/views/project-view/project-view.css */
-
 .project-view-container {
   max-width: 950px;
   margin: 50px auto;
   padding: 40px;
-  background-color: #444; /* Fondo más claro para contraste con #1A1A1A */
+  background-color: #444;
   color: white;
   min-height: calc(100vh - 150px);
 }
@@ -17,7 +15,6 @@
   box-shadow: 0 0 15px rgba(146, 255, 113, 0.2);
 }
 
-/* HEADER AND INFO AREA */
 .info-area {
   display: flex;
   gap: 30px;
@@ -45,15 +42,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Eliminamos el borde interno para un diseño más limpio */
   padding: 0;
 }
 
 .project-title {
   font-size: 2.5rem;
+  line-height: 1.25;
   font-weight: 700;
   margin: 0 0 10px 0;
-  color: white; /* Color del texto del título, ya que el acento está en el rating/borde */
+  color: white;
 }
 
 .description-box {
@@ -90,11 +87,12 @@
 
 .star-rating {
   font-size: 1.8rem;
+
   color: gray;
-  margin-top: -10px;
+  margin-top: 10px;
 }
 .star-rating.big {
-  font-size: 2.5rem; /* Tamaño grande para el rating principal */
+  font-size: 2.5rem;
 }
 
 .star-rating .filled {
@@ -115,7 +113,6 @@
   margin-left: 5px;
 }
 
-/* SECCIÓN DE COMPRA/INFO ESPECÍFICA */
 .purchase-area-small {
   display: flex;
   align-items: center;
@@ -142,7 +139,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-decoration: none; /* Para el <a> listen-button */
+  text-decoration: none;
 }
 
 .buy-button:hover, .listen-button:hover {
@@ -150,7 +147,6 @@
   transform: translateY(-1px);
 }
 
-/* SECCIÓN DE REVIEWS */
 .reviews-section {
   margin-top: 40px;
   padding-top: 30px;

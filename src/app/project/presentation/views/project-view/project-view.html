@@ -37,7 +37,12 @@
           @if ('price' in proj) {
             <div class="purchase-area-small">
               <p class="project-price">{{ $any(proj).price | currency:'USD':'symbol':'1.2-2' }}</p>
-              <button mat-flat-button class="buy-button">Comprar {{ $any(proj).price | currency:'USD':'symbol':'1.2-2' }}</button>
+
+              <button mat-flat-button
+                      class="buy-button"
+                      (click)="addToCart()">
+                {{ "game.add-to-cart" | translate }}
+              </button>
             </div>
           } @else if ('audioUrl' in proj) {
             <div class="purchase-area-small">
@@ -65,7 +70,6 @@
           <p class="no-reviews">No hay reseñas todavía.</p>
         }
       </div>
-
     </div>
   } @else {
     <div class="loading-state">

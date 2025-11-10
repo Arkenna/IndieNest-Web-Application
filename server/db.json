@@ -99,6 +99,16 @@
       "id": 20,
       "name": "Emilio Cornejo",
       "phoneNumber": "+51 989012346"
+    },
+    {
+      "id": 21,
+      "name": "johnnygz41",
+      "phoneNumber": "12345"
+    },
+    {
+      "id": 22,
+      "name": "johnnygz41",
+      "phoneNumber": "12345"
     }
   ],
   "accounts": [
@@ -261,6 +271,22 @@
       "password": "123",
       "isActive": true,
       "role": "PROGRAMMER"
+    },
+    {
+      "id": 21,
+      "userId": 21,
+      "email": "johnnyundertale41@outlook.com",
+      "password": "123",
+      "isActive": true,
+      "role": "STANDARD"
+    },
+    {
+      "id": 22,
+      "userId": 22,
+      "email": "johnnyundertale41@outlook.com",
+      "password": "123",
+      "isActive": true,
+      "role": "STANDARD"
     }
   ],
   "games": [
@@ -783,6 +809,24 @@
         5,
         6
       ]
+    },
+    {
+      "id": 6,
+      "description": "",
+      "creationDate": "2025-11-08T22:22:31.922Z",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 21,
+      "portfolioId": null,
+      "groupProjectIds": null
+    },
+    {
+      "id": 7,
+      "description": "",
+      "creationDate": "2025-11-08T22:22:33.922Z",
+      "image": "https://img.freepik.com/vector-gratis/circulo-azul-usuario-blanco_78370-4707.jpg?semt=ais_hybrid&w=740&q=80",
+      "accountId": 22,
+      "portfolioId": null,
+      "groupProjectIds": null
     }
   ],
   "reviews": [
@@ -867,6 +911,17 @@
       "comment": "Bro poses as the fastest yet flies for like 70% of course. I thought we were measuring running speed and not whatever he does (everyone ignore clawline)",
       "image": "https://i.redd.it/oihxqgduf9yf1.jpeg",
       "creationDate": "2025-10-30T02:29:56.437Z"
+    }
+  ],
+  "shopping-carts": [
+    {
+      "id": 1,
+      "profileId": 6,
+      "gameIds": [
+        1
+      ],
+      "creationDate": "2025-11-09T07:21:13.118Z",
+      "price": 14.989999999999995
     }
   ],
   "answers": [
