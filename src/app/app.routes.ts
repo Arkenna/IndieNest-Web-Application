@@ -13,6 +13,7 @@ const IdProjectView=()=>import("./project/presentation/views/project-view/projec
 const profileView = () => import("./profile/presentation/views/profile-view/profile-view").then(m => m.ProfileView);
 
 const newProjectView = () => import("./project/presentation/views/new-project-view/new-project-view").then(m => m.NewProjectView);
+const shoppingCartView = () => import("./payment/presentation/views/shopping-cart/shopping-cart").then(m => m.ShoppingCart);
 
 const baseTitle = "Indie Nest Web Application";
 
@@ -25,5 +26,5 @@ export const routes: Routes = [
   {path: 'community', loadChildren: () => import('./community/presentation/views/community.routes').then(m=>m.communityRoutes)},
   {path: 'project/new/:id', loadComponent: newProjectView, title: `${baseTitle} - New Project`},
   {path: 'project/view/:type/:id', loadComponent: IdProjectView, title: `${baseTitle} - Project View`},
-
+  {path: 'cart', loadComponent: shoppingCartView, title: `${baseTitle} - Shopping Cart`},
 ];
