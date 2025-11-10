@@ -42,7 +42,6 @@ export class PaymentStore {
     this.errorSignal.set(null);
     this.paymentApi.getShoppingCarts().pipe(takeUntilDestroyed()).subscribe({
       next: shoppingCarts => {
-        console.log(shoppingCarts);
         this.shoppingCartsSignal.set(shoppingCarts);
         this.loadingSignal.set(false);
       },
@@ -55,6 +54,67 @@ export class PaymentStore {
 
   getShoppingCartById(id: number): Signal<ShoppingCart | undefined>{
     return computed(() => id? this.shoppingCarts().find(s => s.id === id): undefined);
+  }
+
+  getCartByProfileId(profileId: number): Signal<ShoppingCart | undefined> {
+    return computed(() =>
+      this.shoppingCarts().find(s => s.profileId === profileId)
+    );
+  }
+
+  addGameToCart(profileId: number, gameId: number, price: number): void {
+    const currentCart = this.shoppingCarts().find(s => s.profileId === profileId);
+
+    if (currentCart) {
+      const updatedCart = new ShoppingCart({
+        id: currentCart.id,
+        profileId: currentCart.profileId,
+        gameIds: [...currentCart.gameIds, gameId],
+        creationDate: currentCart.creationDate,
+        price: currentCart.price + price,
+      });
+      this.updateShoppingCart(updatedCart);
+    } else {
+      const newCart = new ShoppingCart({
+        id: this.shoppingCartCount() + 1,
+        profileId: profileId,
+        gameIds: [gameId],
+        creationDate: new Date(),
+        price: price,
+      });
+      this.addShoppingCart(newCart);
+    }
+  }
+
+  removeGameFromCart(profileId: number, gameId: number, price: number): void {
+    const currentCart = this.shoppingCarts().find(s => s.profileId === profileId);
+
+    if (!currentCart) {
+      return;
+    }
+
+    const indexToRemove = currentCart.gameIds.indexOf(gameId);
+
+    if (indexToRemove === -1) {
+      return;
+    }
+
+    const newGameIds = [...currentCart.gameIds];
+    newGameIds.splice(indexToRemove, 1);
+
+    const updatedCart = new ShoppingCart({
+      id: currentCart.id,
+      profileId: currentCart.profileId,
+      gameIds: newGameIds,
+      creationDate: currentCart.creationDate,
+      price: currentCart.price - price, // Restar el precio
+    });
+
+    if (newGameIds.length === 0) {
+      this.deleteShoppingCart(currentCart.id);
+    } else {
+      this.updateShoppingCart(updatedCart);
+    }
   }
 
   addShoppingCart(shoppingCart: ShoppingCart): void {
@@ -92,10 +152,14 @@ export class PaymentStore {
     this.errorSignal.set(null);
     this.paymentApi.deleteShoppingCart(id).pipe(retry(2)).subscribe({
       next: () => {
+
+
         this.shoppingCartsSignal.update(shoppingCarts => shoppingCarts.filter((s => s.id !== id)));
         this.loadingSignal.set(false);
       },
       error: err => {
+
+        this.shoppingCartsSignal.update(shoppingCarts => shoppingCarts.filter((s => s.id !== id)));
         this.errorSignal.set(this.formatError(err, 'Failed to delete shopping cart'));
         this.loadingSignal.set(false);
       }
