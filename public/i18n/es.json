@@ -71,7 +71,8 @@
   },
   "game": {
     "name": "Juego",
-    "price": "Precio"
+    "price": "Precio",
+    "add-to-cart": "Añadir al carrito"
   },
   "audio": {
     "name": "Audio",
@@ -95,6 +96,7 @@
     "results": "Resultados",
     "best-rated": "Mejor valorados",
     "new": "Nuevos",
+    "reviews": "Reseña(s)",
     "not-found": {
       "art": "Artes no encontrados",
       "game": "Juegos no encontrados",
@@ -115,6 +117,12 @@
   },
   "placeholder": {
     "search": "Buscar"
+  },
+  "shopping-cart": {
+    "title": "Carrito de compras",
+    "login_required": "Debe iniciar sesión para acceder a su carrito de compra.",
+    "subtotal": "Sub-total",
+    "checkout": "Finalizar compra"
   }
 
 }

@@ -71,7 +71,8 @@
   },
   "game": {
     "name": "Game",
-    "price": "Price"
+    "price": "Price",
+    "add-to-cart": "Add to cart"
   },
   "audio": {
     "name": "Audio",
@@ -95,6 +96,7 @@
   "project-view": {
     "results": "Results",
     "best-rated": "Best Rated",
+    "reviews": "Review(s)",
     "new": "New",
     "not-found": {
       "art": "Not artworks found",
@@ -116,6 +118,12 @@
   },
   "placeholder": {
     "search": "Search"
+  },
+  "shopping-cart": {
+    "title": "Shopping Cart",
+    "login_required": "You must log in to access your shopping cart.",
+    "subtotal": "Sub-total",
+    "checkout": "Checkout"
   }
 
 }
