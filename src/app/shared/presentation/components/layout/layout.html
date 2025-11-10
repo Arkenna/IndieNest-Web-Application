@@ -1,4 +1,3 @@
-
 <mat-toolbar>
   <mat-toolbar-row>
     @if (this.iamStore.currentAccount){
@@ -7,6 +6,16 @@
       </button>
 
       <p class="profile-name">{{currentUser()?.name}}</p>
+
+      <button mat-button class="cart-button" (click)="goToCart()">
+        <mat-icon
+          [matBadge]="cartItemCount()"
+          matBadgeColor="accent"
+          [matBadgeHidden]="cartItemCount() === 0">
+          shopping_cart
+        </mat-icon>
+      </button>
+
     }
 
     <h1 class="title">IndieNest</h1>
@@ -25,5 +34,3 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet/>
-
-

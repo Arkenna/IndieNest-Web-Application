@@ -53,3 +53,48 @@ mat-toolbar-row {
 .profile-avatar img:hover {
   transform: scale(1.1);
 }
+
+
+.cart-button {
+  background-color: #92FF71;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-left: 15px;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-button mat-icon {
+  color: black !important;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  transition: color 0.2s ease;
+}
+
+.cart-button:hover {
+  background-color: black;
+  border-color: #92FF71;
+  transform: translateY(-1px);
+}
+
+.cart-button:hover mat-icon {
+  color: #92FF71 !important;
+}
+
+::ng-deep .mat-badge-content {
+  background-color: black ;
+  color: #92FF71 !important;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 18px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+}
