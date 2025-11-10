@@ -1,5 +1,5 @@
 import {Component, computed, inject, signal, OnInit} from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Project as ProjectStore} from '../../../application/project.store'; // Renombrado para evitar conflicto de nombres
 import {DatePipe, CurrencyPipe, NgIf, NgForOf} from '@angular/common';
 import {SupportStore} from '../../../../support/application/support.store';
@@ -11,6 +11,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {ReviewItem} from '../../../../support/presentation/components/review-item/review-item';
 import {Project} from '../../../domain/model/project.entity'; // Importa la entidad base Project
 import {User} from '../../../../iam/domain/model/user.entity';
+import {PaymentStore} from '../../../../payment/application/payment.store'; // <-- NECESARIO
+import {ProfileStore} from '../../../../profile/application/profile.store'; // <-- NECESARIO
 
 
 @Component({
@@ -34,9 +36,12 @@ import {User} from '../../../../iam/domain/model/user.entity';
 export class ProjectView implements OnInit {
 
   private route = inject(ActivatedRoute);
+  private router = inject(Router); // Necesario para navegar a Log In
   readonly projectStore = inject(ProjectStore);
   readonly supportStore = inject(SupportStore);
   readonly iamStore = inject(IamStore);
+  readonly paymentStore = inject(PaymentStore); // <-- INYECCIÓN AÑADIDA
+  readonly profileStore = inject(ProfileStore); // <-- INYECCIÓN AÑADIDA
 
   readonly projectId = signal<number | null>(null);
   readonly projectType = signal<string | null>(null);
@@ -71,6 +76,7 @@ export class ProjectView implements OnInit {
     const proj = this.project();
     return proj ? this.iamStore.getUserById(proj.authorId)() : undefined;
   });
+
   reviews = computed(() => {
     const proj = this.project();
     return proj ? this.supportStore.getReviewsByProjectId(proj.id)() : [];
@@ -83,4 +89,30 @@ export class ProjectView implements OnInit {
     const sum = reviews.reduce((acc, review) => acc + review.rating, 0);
     return Math.round(sum / reviews.length);
   });
+
+  addToCart(): void {
+    const currentAccount = this.iamStore.currentAccount;
+    const project = this.project();
+
+    if (!currentAccount) {
+      this.router.navigate(['/log-in']).then();
+      return;
+    }
+
+    const gameId = project?.id;
+    const price = (project as any)?.price;
+
+    if (!gameId || price === undefined || price === null || this.projectType() !== 'game') {
+      console.warn("Intento de añadir al carrito un proyecto que no es un juego o no tiene precio.");
+      return;
+    }
+    const currentProfile = this.profileStore.profiles().find(p => p.accountId === currentAccount.id);
+
+    if (!currentProfile) {
+      console.error("Perfil de usuario no encontrado. No se puede añadir al carrito.");
+      return;
+    }
+
+    this.paymentStore.addGameToCart(currentProfile.id, gameId, price);
+  }
 }
