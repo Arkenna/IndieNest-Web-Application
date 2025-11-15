@@ -1,0 +1,58 @@
+name: Deploy Angular App to GitHub Pages
+
+# Esto hace que el workflow se ejecute CADA VEZ que haces push a 'main'
+on:
+  push:
+    branches: [ main ]
+
+# Permisos necesarios para que el Action pueda escribir en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    # Usar el entorno 'github-pages'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Trae tu código al servidor de Actions
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Configura Node.js (versión 20 es buena para Angular)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Instala las dependencias del proyecto
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Compila la aplicación de Angular
+      #    ¡ESTE ES EL PASO CLAVE!
+      #    --base-href: Es el nombre de tu repositorio. Es VITAL.
+      - name: Build Angular Project
+        run: npx ng build --configuration production --base-href "/IndieNest-Web-Application/"
+
+      # 5. Prepara los archivos compilados para subirlos
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 6. Sube los archivos compilados
+      #    (La ruta de 'path' es la que usa tu angular.json)
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist/IndieNestWebApp' # <- Tu ruta de salida correcta
+
+      # 7. Deploya los archivos a GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
