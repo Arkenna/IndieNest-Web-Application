@@ -1,0 +1,51 @@
+name: Deploy Angular to GitHub Pages
+
+# Disparar el workflow en cada push a la rama 'main'
+on:
+  push:
+    branches: [ main ]
+
+# Establece los permisos necesarios
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      # ----- 1. CAMBIO IMPORTANTE -----
+      # Usamos el comando de build de Angular con la configuración correcta
+      - name: Build Angular Project
+        run: npx ng build --configuration production --base-href "/IndieNest-Web-Application/" --output-path=dist/IndieNestWebApp
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # ----- 2. CAMBIO IMPORTANTE -----
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Esta es la ruta correcta de tu angular.json
+          path: './dist/IndieNestWebApp'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
