@@ -19,6 +19,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {MatInput} from '@angular/material/input';
 import {Profile} from '../../../../profile/domain/model/profile.entity';
 import {ProfileStore} from '../../../../profile/application/profile.store';
+import {SignUpCommand} from '../../../domain/model/sign-up.command';
 
 @Component({
   selector: 'app-sign-up-view',
@@ -86,6 +87,20 @@ export class SignUpView {
     this.iamStore.addUser(user);
     this.iamStore.addAccount(account);
     this.profileStore.addProfile(profile);
+
+
+
+    const signUpCommand = new SignUpCommand({
+      email: this.form.value.email!,
+      password: this.form.value.password!,
+      isActive: true,
+      role: "STANDARD",
+      name: this.form.value.name!,
+      phoneNumber: this.form.value.phoneNumber!
+    });
+    this.iamStore.signUp(signUpCommand, this.router);
+
+
 
     this.router.navigate(['home']).then();
   }

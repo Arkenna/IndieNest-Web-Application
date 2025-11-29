@@ -4,6 +4,9 @@ import {Observable, retry} from 'rxjs';
 import {Account} from '../domain/model/account.entity';
 import {IamApi} from '../infrastructure/services/iam-api';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {SignInCommand} from '../domain/model/sign-in.command';
+import {Router} from '@angular/router';
+import {SignUpCommand} from '../domain/model/sign-up.command';
 
 
 @Injectable({ providedIn: 'root' })
@@ -25,9 +28,33 @@ export class IamStore {
 
   private _currentAccount: Account | undefined = undefined;
 
+
+  private readonly isSignedInSignal = signal<boolean>(false);
+  readonly isSignedIn = this.isSignedInSignal.asReadonly();
+
+  private readonly currentEmailSignal = signal<string | null>(null);
+  readonly currentEmail = this.currentEmailSignal.asReadonly();
+
+  private readonly currentAccountIdSignal = signal<number | null>(null);
+  readonly currentUserId = this.currentAccountIdSignal.asReadonly();
+
+  readonly loadingUsers = signal<boolean>(false);
+
+  readonly currentToken = computed(() => this.isSignedIn() ? localStorage.getItem('token') : null);
+
+  readonly isLoadingUsers = this.loadingUsers.asReadonly();
+
+
+
+
+
   constructor(private iamApi: IamApi) {
     this.loadUsers();
     this.loadAccounts();
+
+    this.isSignedInSignal.set(false);
+    this.currentEmailSignal.set(null);
+    this.currentAccountIdSignal.set(null);
   }
 
   get currentAccount(): Account | undefined {
@@ -174,6 +201,65 @@ export class IamStore {
         this.loadingSignal.set(false);
       }
     });
+  }
+
+
+  /**
+   * Signs in a user with the provided credentials.
+   * @param signInCommand The sign-in command.
+   * @param router The router for navigation.
+   */
+  signIn(signInCommand: SignInCommand, router: Router) {
+    console.log(signInCommand);
+    this.iamApi.signIn(signInCommand).subscribe({
+      next: (signInResource) => {
+        localStorage.setItem('token', signInResource.token);
+        this.isSignedInSignal.set(true);
+        this.currentEmailSignal.set(signInResource.email);
+        this.currentAccountIdSignal.set(signInResource.id);
+        router.navigate(['/home']).then();
+      },
+      error: (err) => {
+        console.error('Sign-in failed:', err);
+        this.isSignedInSignal.set(false);
+        this.currentEmailSignal.set(null);
+        this.currentAccountIdSignal.set(null);
+        router.navigate(['/iam/sign-in']).then();
+      }
+    });
+  }
+
+  /**
+   * Signs up a new user.
+   * @param signUpCommand The sign-up command.
+   * @param router The router for navigation.
+   */
+  signUp(signUpCommand: SignUpCommand, router: Router) {
+    this.iamApi.signUp(signUpCommand).subscribe({
+      next: (signUpResource) => {
+        console.log('Sign-up successful:', signUpResource);
+        router.navigate(['/iam/sign-in']).then();
+      },
+      error: (err) => {
+        console.error('Sign-up failed:', err);
+        this.isSignedInSignal.set(false);
+        this.currentEmailSignal.set(null);
+        this.currentAccountIdSignal.set(null);
+        router.navigate(['/iam/sign-up']).then();
+      }
+    });
+  }
+
+  /**
+   * Signs out the current user.
+   * @param router The router for navigation.
+   */
+  signOut(router: Router) {
+    localStorage.removeItem('token');
+    this.isSignedInSignal.set(false);
+    this.currentEmailSignal.set(null);
+    this.currentAccountIdSignal.set(null);
+    router.navigate(['/iam/sign-in']).then();
   }
 
 

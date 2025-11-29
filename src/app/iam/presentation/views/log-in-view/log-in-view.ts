@@ -6,6 +6,7 @@ import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} 
 import {ActivatedRoute, Router} from '@angular/router';
 import {IamStore} from '../../../application/iam.store';
 import {TranslatePipe} from '@ngx-translate/core';
+import {SignInCommand} from '../../../domain/model/sign-in.command';
 
 
 
@@ -42,18 +43,29 @@ export class LogInView {
     if(!this.form.valid) return;
 
     const account = this.iamStore.accounts().find(account => account.email === this.form.value.identifier);
-    const user = this.iamStore.users().find(user => user.name === this.form.value.identifier);
+    //const user = this.iamStore.users().find(user => user.name === this.form.value.identifier);
 
     if(account && account.password === this.form.value.password) {
       this.iamStore.currentAccount = account;
     }
-    else if(user && this.iamStore.accounts().find(account => account.userId === user.id)?.password === this.form.value.password ) {
+    /*else if(user && this.iamStore.accounts().find(account => account.userId === user.id)?.password === this.form.value.password ) {
       this.iamStore.currentAccount = this.iamStore.accounts().find(account => account.userId === user.id)!;
-    }
+    }*/
     else{
       this.credentialNotFound = true;
       return;
     }
+
+
+    const signInCommand = new SignInCommand({
+      email: this.form.value.identifier!,
+      password: this.form.value.password!
+    });
+    this.iamStore.signIn(signInCommand, this.router);
+
+
+
+
     this.router.navigate(['home']).then();
   }
 
