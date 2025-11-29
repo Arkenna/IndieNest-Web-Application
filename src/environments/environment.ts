@@ -19,4 +19,7 @@ export const environment = {
   answersEndpointPath: "/answers",
 
   shoppingCartsEndpointPath: "/shopping-carts",
+
+  signInEndpointPath: '/authentication/sign-in',
+  signUpEndpointPath: '/authentication/sign-up',
 };
