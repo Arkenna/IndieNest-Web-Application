@@ -1,82 +1,68 @@
-import {Component, computed, inject, Signal} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {PaymentStore} from '../../../application/payment.store';
+import {CommonModule, CurrencyPipe} from '@angular/common';
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {MatButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {TranslatePipe} from '@ngx-translate/core';
 import {IamStore} from '../../../../iam/application/iam.store';
 import {ProfileStore} from '../../../../profile/application/profile.store';
+import {Router} from '@angular/router';
 import {Project} from '../../../../project/application/project.store';
-import {Game} from '../../../../project/domain/model/game.entity';
-import {CommonModule, CurrencyPipe} from '@angular/common';
-import {MatButton, MatButtonModule} from '@angular/material/button';
-import {MatIcon, MatIconModule} from '@angular/material/icon';
-import {TranslateModule, TranslatePipe} from '@ngx-translate/core';
-import {Router, RouterLink} from '@angular/router';
-
-interface CartItemDetail {
-  game: Game;
-}
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
   imports: [
-    CommonModule,
-    CurrencyPipe,
-    MatButtonModule,
-    MatIconModule,
-    MatIcon,
-    TranslateModule,
-    TranslatePipe,
-    RouterLink
+    CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent,
+    MatButton, MatIcon, CurrencyPipe, TranslatePipe
   ],
   templateUrl: './shopping-cart.html',
-  styleUrl: './shopping-cart.css',
+  styleUrl: './shopping-cart.css'
 })
 export class ShoppingCart {
-
-  private router = inject(Router);
   readonly paymentStore = inject(PaymentStore);
   readonly iamStore = inject(IamStore);
   readonly profileStore = inject(ProfileStore);
   readonly projectStore = inject(Project);
+  private router = inject(Router);
 
-  currentProfile = computed(() =>
-    this.profileStore.profiles().find(p => p.accountId === this.iamStore.currentAccount?.id)
-  );
-  currentCart = computed(() => {
-    const profile = this.currentProfile();
-    return profile ? this.paymentStore.getCartByProfileId(profile.id)() : undefined;
+  cart = computed(() => {
+    const account = this.iamStore.currentAccount;
+    if (!account) return null;
+
+    const profile = this.profileStore.profiles().find(p => p.accountId === account.id);
+    if (!profile) return null;
+
+    return this.paymentStore.getCartByProfileId(profile.id)() || null;
+  });
+  cartItems = computed(() => this.cart()?.gameIds || []);
+
+  cartItemsDetail = computed(() => {
+    const ids = this.cartItems();
+    const allGames = this.projectStore.games();
+
+    return ids.map(id => {
+      const game = allGames.find(g => g.id === id);
+      return game ? { game } : null;
+    }).filter(item => item !== null);
   });
 
-  cartItemsDetail = computed<CartItemDetail[]>(() => {
-    const cart = this.currentCart();
-
-    if (!cart || !cart.gameIds) return [];
-
-    return cart.gameIds
-      .map(gameId => this.projectStore.getGameById(gameId)())
-      .filter((game): game is Game => game !== undefined)
-      .map(game => ({ game }));
+  totalPrice = computed(() => {
+    return this.cart()?.price || 0;
   });
 
-  totalPrice = computed(() => this.currentCart()?.price ?? 0);
-
-
-  removeItem(gameId: number, gamePrice: number): void {
-    const profile = this.currentProfile();
-
-    if (profile && this.iamStore.currentAccount) {
-      this.paymentStore.removeGameFromCart(profile.id, gameId, gamePrice);
-    } else {
-      this.router.navigate(['/log-in']).then();
-    }
+  checkout() {
+    console.log('Proceeding to checkout...');
   }
 
-  checkout(): void {
-    if (!this.iamStore.currentAccount) {
-      this.router.navigate(['/log-in']).then();
-      return;
-    }
-    if (this.totalPrice() > 0) {
+  removeItem(gameId: number, price: number) {
+    const account = this.iamStore.currentAccount;
+    if (!account) return;
 
+    const profile = this.profileStore.profiles().find(p => p.accountId === account.id);
+    if (profile) {
+      this.paymentStore.removeGameFromCart(profile.id, gameId, price);
     }
   }
 }

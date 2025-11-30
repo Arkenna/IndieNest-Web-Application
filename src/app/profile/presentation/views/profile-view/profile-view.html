@@ -1,7 +1,9 @@
 <div class="profile-container">
 
   <div class="information-container">
-    <img class="profile-image" src="{{currentProfile()?.image}}" alt="{{currentProfile()?.id}}">
+    <img class="profile-image"
+         [src]="currentProfile()?.image ? currentProfile()?.image : 'https://i.postimg.cc/tg9FsCdg/12808894.png'"
+         alt="Profile Image">
 
     @if(!isEditing){
 
@@ -9,13 +11,12 @@
       <p class="phone">{{profileUser()?.phoneNumber}}</p>
       <p class="description">{{currentProfile()?.description}}</p>
 
-      @if(profileAccount()?.id === iamStore.currentAccount?.id){
+      @if(isOwner()){
         <button mat-raised-button class="edit-button" (click)="enableEdit()">{{"profile.edit" | translate}}</button>
       }
     }
     @else{
       <form [formGroup]="form" (ngSubmit)="submit()" class="profile-form">
-
         <p class="field-label">{{"profile.name" | translate}}</p>
         <input matInput formControlName="name" required class="normal-input">
 
@@ -23,55 +24,37 @@
         <input matInput formControlName="phone" required class="normal-input">
 
         <p class="field-label">{{"profile.description" | translate}}</p>
-        <textarea matInput formControlName="description"
-                  rows="4"
-                  class="textarea-input"
-        ></textarea>
+        <textarea matInput formControlName="description" rows="4" class="textarea-input"></textarea>
 
         <div class="actions">
-
           <button mat-raised-button color="primary" class="cancel-button" (click)="cancel()">
             {{ "profile.cancel" | translate}}
           </button>
-
           <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="form.invalid">
             {{ "profile.update" | translate}}
           </button>
         </div>
       </form>
-
     }
 
   </div>
 
   <div class="portfolio-folder">
 
-    @if(profileAccount()?.id === iamStore.currentAccount?.id){
+    @if(isOwner()){
       <button mat-raised-button class="add-button-floating" (click)="addProject()">{{"portfolio.new" | translate}}</button>
     }
 
     <div class="folder-header">
       <div class="folder-tab title-tab">{{"portfolio.name" | translate}}</div>
-
       <div class="folder-tabs">
-        <div
-          class="folder-tab"
-          [class.active]="selectedTab === 'games'"
-          (click)="selectTab('games')">
+        <div class="folder-tab" [class.active]="selectedTab === 'games'" (click)="selectTab('games')">
           {{"portfolio.games" | translate}}
         </div>
-
-        <div
-          class="folder-tab"
-          [class.active]="selectedTab === 'audios'"
-          (click)="selectTab('audios')">
+        <div class="folder-tab" [class.active]="selectedTab === 'audios'" (click)="selectTab('audios')">
           {{"portfolio.audios" | translate}}
         </div>
-
-        <div
-          class="folder-tab"
-          [class.active]="selectedTab === 'arts'"
-          (click)="selectTab('arts')">
+        <div class="folder-tab" [class.active]="selectedTab === 'arts'" (click)="selectTab('arts')">
           {{"portfolio.arts" | translate}}
         </div>
       </div>
@@ -87,7 +70,6 @@
             </div>
           }
         }
-
         @if(selectedTab === 'audios') {
           @for (audio of portfolioAudios(); track audio.id) {
             <div class="project-card">
@@ -96,7 +78,6 @@
             </div>
           }
         }
-
         @if(selectedTab === 'arts') {
           @for (art of portfolioArts(); track art.id) {
             <div class="project-card">
@@ -109,4 +90,3 @@
     </div>
   </div>
 </div>
-

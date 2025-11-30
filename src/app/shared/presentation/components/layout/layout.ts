@@ -1,9 +1,7 @@
-// src/app/shared/presentation/components/layout/layout.ts (Modificación)
-
 import {Component, computed, inject} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {MatToolbar, MatToolbarRow} from '@angular/material/toolbar';
-import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatButton} from '@angular/material/button';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LanguageSwitcher} from '../language-switcher/language-switcher';
 import {IamStore} from '../../../../iam/application/iam.store';
@@ -15,51 +13,47 @@ import {MatBadge} from '@angular/material/badge';
 @Component({
   selector: 'app-layout',
   imports: [
-    RouterOutlet,
-    RouterLink,
-    MatToolbarRow,
-    MatToolbar,
-    MatButton,
-    RouterLinkActive,
-    TranslatePipe,
-    LanguageSwitcher,
-    MatIcon,
-    MatBadge
+    RouterOutlet, RouterLink, MatToolbarRow, MatToolbar, MatButton,
+    RouterLinkActive, TranslatePipe, LanguageSwitcher, MatIcon, MatBadge
   ],
   templateUrl: './layout.html',
   styleUrl: './layout.css'
 })
 export class Layout {
-
-  private router = inject(Router);
-
-  options = [
-    {link: '/marketplace/home', label: 'option.home'},
-    {link: '/community/forum', label: 'option.forum'},
-  ];
-
-  optional = [
-    {link: '/sign-up', label: 'option.sign-up'},
-    {link: '/log-in', label: 'option.log-in'},
-  ]
+  // Hacemos publico el router para poder usarlo en el HTML (Sign Out)
+  public router = inject(Router);
 
   readonly iamStore = inject(IamStore);
   readonly profileStore = inject(ProfileStore);
   readonly paymentStore = inject(PaymentStore);
 
+  options = [
+    {link: '/marketplace/home', label: 'option.home'},
+    {link: '/community/forum', label: 'option.forum'},
+  ];
+  optional = [
+    {link: '/sign-up', label: 'option.sign-up'},
+    {link: '/log-in', label: 'option.log-in'},
+  ]
+
   currentProfile = computed(() =>
     this.profileStore.profiles().find(p =>
-      p.accountId === this.iamStore.currentAccount?.id));
+      p.accountId === this.iamStore.currentAccountIdSignal()));
 
-  currentUser = computed(() =>
-    this.iamStore.getUserById(this.iamStore.currentAccount?.userId!)());
+  currentUser = computed(() => {
+    const accountId = this.iamStore.currentAccountIdSignal();
+    if (!accountId) return undefined;
+
+    const account = this.iamStore.accounts().find(a => a.id === accountId);
+    if (!account) return undefined;
+
+    return this.iamStore.getUserById(account.userId)();
+  });
 
   cartItemCount = computed(() => {
     const profile = this.currentProfile();
     if (!profile) return 0;
-
     const cart = this.paymentStore.getCartByProfileId(profile.id)();
-
     return cart?.gameIds?.length ?? 0;
   });
 
@@ -68,8 +62,7 @@ export class Layout {
   }
 
   selectProfile(){
-    if(!this.iamStore.currentAccount) return;
+    if(!this.iamStore.currentAccountIdSignal()) return;
     this.router.navigate([`/profile/${this.currentProfile()?.id}`]).then();
   }
-
 }

@@ -9,10 +9,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ReviewItem} from '../../../../support/presentation/components/review-item/review-item';
-import {Project} from '../../../domain/model/project.entity'; // Importa la entidad base Project
+import {Project} from '../../../domain/model/project.entity';
 import {User} from '../../../../iam/domain/model/user.entity';
-import {PaymentStore} from '../../../../payment/application/payment.store'; // <-- NECESARIO
-import {ProfileStore} from '../../../../profile/application/profile.store'; // <-- NECESARIO
+import {PaymentStore} from '../../../../payment/application/payment.store';
+import {ProfileStore} from '../../../../profile/application/profile.store';
 
 
 @Component({
@@ -36,12 +36,12 @@ import {ProfileStore} from '../../../../profile/application/profile.store'; // <
 export class ProjectView implements OnInit {
 
   private route = inject(ActivatedRoute);
-  private router = inject(Router); // Necesario para navegar a Log In
+  private router = inject(Router);
   readonly projectStore = inject(ProjectStore);
   readonly supportStore = inject(SupportStore);
   readonly iamStore = inject(IamStore);
-  readonly paymentStore = inject(PaymentStore); // <-- INYECCIÓN AÑADIDA
-  readonly profileStore = inject(ProfileStore); // <-- INYECCIÓN AÑADIDA
+  readonly paymentStore = inject(PaymentStore);
+  readonly profileStore = inject(ProfileStore);
 
   readonly projectId = signal<number | null>(null);
   readonly projectType = signal<string | null>(null);
@@ -103,13 +103,13 @@ export class ProjectView implements OnInit {
     const price = (project as any)?.price;
 
     if (!gameId || price === undefined || price === null || this.projectType() !== 'game') {
-      console.warn("Intento de añadir al carrito un proyecto que no es un juego o no tiene precio.");
+      console.warn("Attempt to add a project to the cart that is not a game or does not have a price.");
       return;
     }
     const currentProfile = this.profileStore.profiles().find(p => p.accountId === currentAccount.id);
 
     if (!currentProfile) {
-      console.error("Perfil de usuario no encontrado. No se puede añadir al carrito.");
+      console.error("User profile not found. Cannot add to cart..");
       return;
     }
 

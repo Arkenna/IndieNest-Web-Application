@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiBaseUrl: "https://indienest-web-application.onrender.com/api/v1",
+  apiBaseUrl: "https://indienest.azurewebsites.net/api/v1",
 
   usersEndpointPath: "/users",
   accountsEndpointPath: "/accounts",
@@ -20,5 +20,6 @@ export const environment = {
 
   shoppingCartsEndpointPath: "/shopping-carts",
 
-
+  signInEndpointPath: '/authentication/sign-in',
+  signUpEndpointPath: '/authentication/sign-up',
 };

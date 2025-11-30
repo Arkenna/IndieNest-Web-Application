@@ -3,7 +3,7 @@ import {UsersResponse} from '../responses/users-response';
 import {User} from '../../domain/model/user.entity';
 import {UserResource} from '../resources/user-resource';
 
-export class UserAssembler implements BaseAssembler <User, UserResource, UsersResponse>  {
+export class UserAssembler implements BaseAssembler <User, UserResource, any> {
 
   toEntityFromResource(resource: UserResource): User{
     return new User({
@@ -12,8 +12,10 @@ export class UserAssembler implements BaseAssembler <User, UserResource, UsersRe
       phoneNumber: resource.phoneNumber
     });
   }
-  toEntitiesFromResponse(response: UsersResponse){
-    return response.users.map(user => this.toEntityFromResource(user));
+
+  toEntitiesFromResponse(response: any): User[] {
+    const data = Array.isArray(response) ? response : (response.users || []);
+    return data.map((user: UserResource) => this.toEntityFromResource(user));
   }
 
   toResourceFromEntity(entity:User){
@@ -23,5 +25,4 @@ export class UserAssembler implements BaseAssembler <User, UserResource, UsersRe
       phoneNumber: entity.phoneNumber
     } as UserResource;
   }
-
 }
