@@ -1,13 +1,12 @@
 import {computed, Injectable, Signal, signal} from '@angular/core';
 import {User} from '../domain/model/user.entity';
-import {Observable, retry} from 'rxjs';
+import {retry, take} from 'rxjs';
 import {Account} from '../domain/model/account.entity';
 import {IamApi} from '../infrastructure/services/iam-api';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {SignInCommand} from '../domain/model/sign-in.command';
 import {Router} from '@angular/router';
 import {SignUpCommand} from '../domain/model/sign-up.command';
-
 
 @Injectable({ providedIn: 'root' })
 export class IamStore {
@@ -17,109 +16,95 @@ export class IamStore {
   private readonly accountsSignal = signal<Account[]>([]);
   readonly accounts = this.accountsSignal.asReadonly();
 
-  readonly userCount = computed(() => this.users().length);
-  readonly accountCount = computed(() => this.accounts().length);
-
   private readonly loadingSignal = signal<boolean>(false);
   readonly loading = this.loadingSignal.asReadonly();
 
   private readonly errorSignal = signal<string | null>(null);
   readonly error = this.errorSignal.asReadonly();
 
-  private _currentAccount: Account | undefined = undefined;
 
-
-  private readonly isSignedInSignal = signal<boolean>(false);
-  readonly isSignedIn = this.isSignedInSignal.asReadonly();
-
-  private readonly currentEmailSignal = signal<string | null>(null);
-  readonly currentEmail = this.currentEmailSignal.asReadonly();
-
-  private readonly currentAccountIdSignal = signal<number | null>(null);
+  public readonly currentAccountIdSignal = signal<number | null>(
+    localStorage.getItem('accountId') ? Number(localStorage.getItem('accountId')) : null
+  );
   readonly currentUserId = this.currentAccountIdSignal.asReadonly();
 
+  private readonly isSignedInSignal = signal<boolean>(!!localStorage.getItem('token'));
+  readonly isSignedIn = this.isSignedInSignal.asReadonly();
+
+  private readonly currentEmailSignal = signal<string | null>(localStorage.getItem('email'));
+  readonly currentEmail = this.currentEmailSignal.asReadonly();
+
+  readonly userCount = computed(() => this.users().length);
+  readonly accountCount = computed(() => this.accounts().length);
   readonly loadingUsers = signal<boolean>(false);
-
   readonly currentToken = computed(() => this.isSignedIn() ? localStorage.getItem('token') : null);
-
   readonly isLoadingUsers = this.loadingUsers.asReadonly();
-
-
-
-
 
   constructor(private iamApi: IamApi) {
     this.loadUsers();
     this.loadAccounts();
-
-    this.isSignedInSignal.set(false);
-    this.currentEmailSignal.set(null);
-    this.currentAccountIdSignal.set(null);
+    if (this.currentAccountIdSignal()) {
+      this.loadAccountById(this.currentAccountIdSignal()!);
+    }
   }
+
 
   get currentAccount(): Account | undefined {
-    return this._currentAccount;
-  }
-  set currentAccount(value: Account){
-    this._currentAccount = value;
+    return this.accounts().find(account => account.id === this.currentAccountIdSignal());
   }
 
+  private loadAccountById(id: number): void {
+    this.iamApi.getAccount(id).pipe(take(1)).subscribe({
+      next: account => {
+        this.accountsSignal.update(currentAccounts => {
+          const index = currentAccounts.findIndex(a => a.id === account.id);
+          if (index !== -1) {
+            const updated = [...currentAccounts];
+            updated[index] = account;
+            return updated;
+          }
+          return [...currentAccounts, account];
+        });
+      },
+      error: err => console.error('Error loading account', err)
+    });
+  }
   private loadUsers(): void {
     this.loadingSignal.set(true);
-    this.errorSignal.set(null);
     this.iamApi.getUsers().pipe(takeUntilDestroyed()).subscribe({
-      next: users => {
-        console.log(users);
-        this.usersSignal.set(users);
-        this.loadingSignal.set(false);
-      },
-      error: err => {
-        this.errorSignal.set(this.formatError(err, 'Failed to load users'));
-        this.loadingSignal.set(false);
-      }
+      next: users => { this.usersSignal.set(users); this.loadingSignal.set(false); },
+      error: () => this.loadingSignal.set(false)
     });
   }
 
   private loadAccounts(): void {
     this.loadingSignal.set(true);
-    this.errorSignal.set(null);
     this.iamApi.getAccounts().pipe(takeUntilDestroyed()).subscribe({
-      next: accounts => {
-        console.log(accounts);
-        this.accountsSignal.set(accounts);
-        this.loadingSignal.set(false);
-      },
-      error: err => {
-        this.errorSignal.set(this.formatError(err, 'Failed to load accounts'));
-        this.loadingSignal.set(false);
-      }
+      next: accounts => { this.accountsSignal.set(accounts); this.loadingSignal.set(false); },
+      error: () => this.loadingSignal.set(false)
     });
   }
 
   private formatError(error: any, fallback: string): string {
-    if (error instanceof Error) {
-      return error.message.includes('Resource not found') ? '${fallback}: Not found' : error.message;
-    }
     return fallback;
   }
-
   getUserById(id: number): Signal<User | undefined>{
     return computed(() => id? this.users().find(u => u.id === id): undefined);
   }
 
   addUser(user: User): void {
-     this.loadingSignal.set(true);
-     this.errorSignal.set(null);
-     this.iamApi.createUser(user).pipe(retry(2)).subscribe({
-       next: createdUser => {
-         this.usersSignal.update(users => [...users, createdUser]);
-         this.loadingSignal.set(false);
-       },
-       error: err => {
-         this.errorSignal.set(this.formatError(err, 'Failed to create user'));
-         this.loadingSignal.set(false);
-       }
-     });
+    this.loadingSignal.set(true);
+    this.errorSignal.set(null);
+    this.iamApi.createUser(user).pipe(retry(2)).subscribe({
+      next: createdUser => {
+        this.usersSignal.update(users => [...users, createdUser]);
+        this.loadingSignal.set(false);
+      },
+      error: err => {
+        this.errorSignal.set(this.formatError(err, 'Failed to create user'));
+        this.loadingSignal.set(false);
+      }
+    });
   }
 
   updateUser(updatedUser: User): void {
@@ -202,65 +187,47 @@ export class IamStore {
       }
     });
   }
-
-
-  /**
-   * Signs in a user with the provided credentials.
-   * @param signInCommand The sign-in command.
-   * @param router The router for navigation.
-   */
   signIn(signInCommand: SignInCommand, router: Router) {
-    console.log(signInCommand);
     this.iamApi.signIn(signInCommand).subscribe({
       next: (signInResource) => {
         localStorage.setItem('token', signInResource.token);
+        localStorage.setItem('accountId', signInResource.id.toString());
+        localStorage.setItem('email', signInResource.email);
+
         this.isSignedInSignal.set(true);
         this.currentEmailSignal.set(signInResource.email);
         this.currentAccountIdSignal.set(signInResource.id);
-        router.navigate(['/home']).then();
+
+        this.loadAccountById(signInResource.id);
+        this.loadUsers();
+
+        router.navigate(['/']).then();
       },
       error: (err) => {
         console.error('Sign-in failed:', err);
-        this.isSignedInSignal.set(false);
-        this.currentEmailSignal.set(null);
-        this.currentAccountIdSignal.set(null);
-        router.navigate(['/iam/sign-in']).then();
+        this.signOut(router);
       }
     });
   }
 
-  /**
-   * Signs up a new user.
-   * @param signUpCommand The sign-up command.
-   * @param router The router for navigation.
-   */
   signUp(signUpCommand: SignUpCommand, router: Router) {
     this.iamApi.signUp(signUpCommand).subscribe({
-      next: (signUpResource) => {
-        console.log('Sign-up successful:', signUpResource);
-        router.navigate(['/iam/sign-in']).then();
+      next: () => {
+        router.navigate(['/log-in']).then();
       },
-      error: (err) => {
-        console.error('Sign-up failed:', err);
-        this.isSignedInSignal.set(false);
-        this.currentEmailSignal.set(null);
-        this.currentAccountIdSignal.set(null);
-        router.navigate(['/iam/sign-up']).then();
-      }
+      error: (err) => console.error(err)
     });
   }
 
-  /**
-   * Signs out the current user.
-   * @param router The router for navigation.
-   */
   signOut(router: Router) {
     localStorage.removeItem('token');
+    localStorage.removeItem('accountId');
+    localStorage.removeItem('email');
+
     this.isSignedInSignal.set(false);
     this.currentEmailSignal.set(null);
     this.currentAccountIdSignal.set(null);
-    router.navigate(['/iam/sign-in']).then();
+
+    router.navigate(['/log-in']).then();
   }
-
-
 }

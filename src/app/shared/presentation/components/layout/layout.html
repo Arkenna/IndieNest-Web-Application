@@ -1,11 +1,14 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    @if (this.iamStore.currentAccount){
+    @if (iamStore.currentAccountIdSignal()) {
+
       <button class="profile-avatar" routerLinkActive="active" (click)="selectProfile()">
-        <img src="{{this.currentProfile()!.image}}" alt="profile-image">
+        <img class="profile-image"
+             [src]="currentProfile()?.image ? currentProfile()?.image : 'https://i.postimg.cc/tg9FsCdg/12808894.png'"
+             alt="Profile Image">
       </button>
 
-      <p class="profile-name">{{currentUser()?.name}}</p>
+      <p class="profile-name">{{ currentUser()?.name }}</p>
 
       <button mat-button class="cart-button" (click)="goToCart()">
         <mat-icon
@@ -16,12 +19,15 @@
         </mat-icon>
       </button>
 
+      <button mat-button (click)="iamStore.signOut(router)">Sign Out</button>
+
     }
 
     <h1 class="title">IndieNest</h1>
     <div class="mat-spacer"></div>
+
     <div class="options">
-      @if(!iamStore.currentAccount){
+      @if (!iamStore.currentAccountIdSignal()) {
         @for (option of optional; track option.label) {
           <a mat-button class="custom-button" [routerLink]="option.link" routerLinkActive="active">{{ option.label | translate }}</a>
         }

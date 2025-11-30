@@ -30,7 +30,6 @@ export class ProfileView {
   readonly iamStore = inject(IamStore);
   readonly projectStore = inject(Project);
 
-
   readonly profileId = signal<number | null>(null);
 
   constructor() {
@@ -51,6 +50,13 @@ export class ProfileView {
   profileUser = computed(() =>
     this.iamStore.getUserById(this.profileAccount()?.userId ?? 0)()
   );
+
+  isOwner = computed(() => {
+    const profileAccountId = this.currentProfile()?.accountId;
+    const currentAccountId = this.iamStore.currentAccount?.id;
+
+    return !!profileAccountId && !!currentAccountId && profileAccountId === currentAccountId;
+  });
 
   profilePortfolio = computed(() =>
     this.profileStore.getPortfolioById(this.currentProfile()?.portfolioId ?? 0)()
@@ -84,11 +90,15 @@ export class ProfileView {
   });
 
   enableEdit(){
+    this.form.patchValue({
+      name: this.profileUser()?.name,
+      phone: this.profileUser()?.phoneNumber?.replace('+51 ', ''),
+      description: this.currentProfile()?.description
+    });
     this.isEditing = !this.isEditing;
   }
 
   submit(){
-
     if(!this.form.valid) return;
 
     const updatedProfile = new Profile({
@@ -115,7 +125,6 @@ export class ProfileView {
   cancel(){
     this.isEditing = false;
   }
-
 
   selectedTab: 'portfolio' | 'games' | 'audios' | 'arts' = 'games';
 
